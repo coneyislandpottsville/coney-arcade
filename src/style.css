@@ -95,6 +95,7 @@ body {
 }
 
 .sheet {
+  min-height: 100vh;
   min-height: 100svh;
   max-width: 2400px;
   margin-inline: auto;
