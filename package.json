@@ -9,12 +9,14 @@
     "build": "vite build",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "images": "python tools/derive-images.py"
+    "images": "python tools/derive-images.py",
+    "social": "node tools/social/render.cjs"
   },
   "engines": {
     "node": ">=22.12"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
   }
