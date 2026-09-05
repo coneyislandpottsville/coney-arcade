@@ -1,0 +1,9 @@
+# The Coney Island Pottsville Arcade
+
+> Free browser games from The Coney Island restaurant and tavern in Pottsville, Pennsylvania. One page, one link per game.
+
+## Games
+
+- [The Maze of Time](https://maze.coneyislandpottsville.com/): reach the time portal before the clock runs out.
+- [Tiki Bar Slots](https://slots.coneyislandpottsville.com/): three reels of Coney Island classics, center line pays.
+- [Trivia Bowl](https://trivia.coneyislandpottsville.com/): the Schuylkill County trivia bowl.
