@@ -1,0 +1,21 @@
+{
+  "name": "coney-arcade",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The Coney Island Pottsville Arcade splash page",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "check": "tsc --noEmit",
+    "images": "python tools/derive-images.py"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
+  }
+}
