@@ -16,6 +16,7 @@
     "node": ">=22.12"
   },
   "devDependencies": {
+    "lighthouse": "^13.4.1",
     "playwright": "^1.63.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
