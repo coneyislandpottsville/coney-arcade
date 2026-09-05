@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>OG image source, rendered by render.cjs</title>
+    <style>
+      @font-face {
+        font-family: "Alfa Slab One";
+        src: url("../../public/fonts/AlfaSlabOne-400-latin.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Oswald";
+        src: url("../../public/fonts/Oswald-var.v1.woff2") format("woff2");
+        font-weight: 200 700;
+      }
+      :root {
+        --ground: #1a110c;
+        --cream: #f3e6c8;
+        --ink: #2a1608;
+        --orange: #f2673a;
+        --amber: #f0a13a;
+        --gold: #c9a227;
+        --notch: 7px;
+        --w: 460px;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--ground);
+      }
+      .card {
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        color: var(--cream);
+        font-family: Oswald, sans-serif;
+        background: radial-gradient(70% 90% at 76% 45%, #2b1c13 0%, var(--ground) 62%);
+      }
+
+      .masthead {
+        position: absolute;
+        left: 64px;
+        top: 66px;
+        width: 520px;
+        font-family: "Alfa Slab One", serif;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .venue {
+        display: block;
+        font-size: calc(520px / 18.466);
+        line-height: 1;
+      }
+      .arcade {
+        display: block;
+        margin-top: 0.12em;
+        font-size: calc(520px / 4.621);
+        line-height: 0.92;
+        letter-spacing: -0.005em;
+        color: var(--orange);
+      }
+      .lede {
+        position: absolute;
+        left: 64px;
+        top: 262px;
+        margin: 0;
+        font-size: 28px;
+        line-height: 1.3;
+        letter-spacing: 0.01em;
+        color: rgb(243 230 200 / 0.82);
+      }
+      .seal {
+        position: absolute;
+        left: 64px;
+        top: 322px;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 22px 8px 9px;
+        background: var(--cream);
+        color: var(--ink);
+        border-radius: 999px;
+        font: 24px/1 "Alfa Slab One", serif;
+      }
+      .seal img {
+        width: 48px;
+        height: 48px;
+        display: block;
+      }
+      .addr {
+        position: absolute;
+        left: 64px;
+        bottom: 60px;
+        margin: 0;
+        font-size: 30px;
+        line-height: 1;
+        letter-spacing: 0.005em;
+        color: var(--cream);
+      }
+
+      /* Three tickets, dealt as a hand. */
+      .ticket {
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        width: var(--w);
+        transform: translate(-50%, -50%) rotate(var(--r));
+        color: var(--ink);
+        border-radius: 8px;
+        box-shadow:
+          0 2px 3px rgb(0 0 0 / 0.5),
+          0 34px 54px -18px rgb(0 0 0 / 0.85),
+          0 26px 80px -10px color-mix(in srgb, var(--glow) 55%, transparent);
+      }
+      .body {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1200 / 630;
+        background: #000;
+        border-radius: 8px 8px 0 0;
+        -webkit-mask-image:
+          radial-gradient(circle at 0 100%, transparent var(--notch), #000 calc(var(--notch) + 0.5px)),
+          radial-gradient(circle at 100% 100%, transparent var(--notch), #000 calc(var(--notch) + 0.5px));
+        -webkit-mask-composite: source-in;
+        mask-image:
+          radial-gradient(circle at 0 100%, transparent var(--notch), #000 calc(var(--notch) + 0.5px)),
+          radial-gradient(circle at 100% 100%, transparent var(--notch), #000 calc(var(--notch) + 0.5px));
+        mask-composite: intersect;
+      }
+      .body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 1px 0 rgb(243 230 200 / 0.22);
+      }
+      .body img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .stub {
+        position: relative;
+        display: grid;
+        gap: 2px;
+        padding: 13px 17px 14px;
+        background: var(--cream);
+        border-radius: 0 0 8px 8px;
+        -webkit-mask-image:
+          radial-gradient(circle at 0 0, transparent var(--notch), #000 calc(var(--notch) + 0.5px)),
+          radial-gradient(circle at 100% 0, transparent var(--notch), #000 calc(var(--notch) + 0.5px));
+        -webkit-mask-composite: source-in;
+        mask-image:
+          radial-gradient(circle at 0 0, transparent var(--notch), #000 calc(var(--notch) + 0.5px)),
+          radial-gradient(circle at 100% 0, transparent var(--notch), #000 calc(var(--notch) + 0.5px));
+        mask-composite: intersect;
+      }
+      .stub::before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: calc(var(--notch) + 6px);
+        right: calc(var(--notch) + 6px);
+        border-top: 2px dashed rgb(42 22 8 / 0.45);
+      }
+      .stub.right {
+        text-align: right;
+      }
+      .name {
+        font: 22px/1.08 "Alfa Slab One", serif;
+      }
+      .site {
+        font-size: 13px;
+        line-height: 1.3;
+        letter-spacing: 0.005em;
+        color: rgb(42 22 8 / 0.88);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="masthead">
+        <span class="venue">The Coney Island Pottsville</span>
+        <span class="arcade">Arcade</span>
+      </div>
+      <p class="lede">Pick a ticket to play.</p>
+      <p class="seal"><img src="../../src/img/c-mark.svg" alt="" />Free to play</p>
+      <p class="addr">arcade.ConeyIslandPottsville.com</p>
+
+      <div class="ticket" style="--x: 902px; --y: 452px; --r: -1deg; --glow: var(--gold); z-index: 1">
+        <span class="body"><img src="../../src/img/trivia-960.webp" alt="" /></span>
+        <span class="stub"><span class="name">Trivia Bowl</span><span class="site">trivia.ConeyIslandPottsville.com</span></span>
+      </div>
+      <div class="ticket" style="--x: 896px; --y: 342px; --r: 1.5deg; --glow: var(--orange); z-index: 2">
+        <span class="body"><img src="../../src/img/maze-960.webp" alt="" /></span>
+        <span class="stub"><span class="name">The Maze of Time</span><span class="site">maze.ConeyIslandPottsville.com</span></span>
+      </div>
+      <div class="ticket" style="--x: 890px; --y: 232px; --r: -2deg; --glow: var(--amber); z-index: 3">
+        <span class="body"><img src="../../src/img/tiki-960.webp" alt="" /></span>
+        <span class="stub"><span class="name">Tiki Bar Slots</span><span class="site">slots.ConeyIslandPottsville.com</span></span>
+      </div>
+    </div>
+  </body>
+</html>
