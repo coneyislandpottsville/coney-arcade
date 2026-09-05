@@ -10,7 +10,7 @@ npm run preview  # serve dist/
 npm run check    # type-check src/
 ```
 
-Vite, vanilla TypeScript, no runtime dependencies. Fonts are self-hosted under `public/fonts` with their OFL licences.
+Vite, vanilla TypeScript, no runtime dependencies. Fonts are self-hosted under `public/fonts` with their OFL licences. Every push to `main` deploys to GitHub Pages through `.github/workflows/pages.yml`.
 
 ## Regenerating the art
 
