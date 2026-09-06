@@ -1,0 +1,11 @@
+# The repo is LF everywhere. Without this, a script or editor that rewrites a
+# file on Windows stores CRLF and the whole file reads as changed.
+* text=auto eol=lf
+
+# Never touched: the trailers are not here, but the art the page ships is.
+*.avif binary
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.ico  binary
+*.woff2 binary
