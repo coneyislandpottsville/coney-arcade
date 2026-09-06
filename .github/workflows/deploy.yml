@@ -25,6 +25,13 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      # Keyed on the manifest alone, with no restore-keys: a partial hit would
+      # leave an older version's files beside the current one, and the build
+      # copies all of public/media into dist.
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: public/media
+          key: media-${{ hashFiles('tools/media-manifest.json') }}
       - run: npm run media:pull
       - run: npm run build
       - run: npx --yes wrangler@4.127.0 pages deploy dist --project-name coney-arcade --branch main
