@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-`npm run build` writes the site to `dist/`, and every push to `main` deploys it to GitHub Pages. Vite, vanilla TypeScript, no runtime dependencies, fonts self-hosted with their OFL licences.
+`npm run build` writes the site to `dist/`. Vite, vanilla TypeScript, no runtime dependencies, fonts self-hosted with their OFL licences.
 
 ## Artwork
 
