@@ -9,6 +9,9 @@
     "build": "vite build",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "media:stage": "node tools/media.mjs stage",
+    "media:push": "node tools/media.mjs push",
+    "media:pull": "node tools/media.mjs pull",
     "images": "python tools/derive-images.py",
     "social": "node tools/social/render.cjs"
   },
