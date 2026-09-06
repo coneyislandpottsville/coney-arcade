@@ -42,7 +42,7 @@
         </h1>
         <p class="lede">Pick a ticket to play.</p>
         <p class="seal">
-          <img src="/src/img/c-mark.svg" width="160" height="160" alt="" />
+          <img src="/src/img/coney-logo.svg" width="291" height="196" alt="" />
           <span>Free to play</span>
         </p>
       </header>
@@ -165,6 +165,480 @@
           </span>
         </a>
       </nav>
+
+      <a class="seam" href="#now-showing">
+        <span class="tab">
+          Now showing
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 8l8 8 8-8" stroke="currentColor" stroke-width="3.4" stroke-linecap="square" />
+          </svg>
+        </span>
+      </a>
     </main>
+
+    <section class="chapters" id="now-showing" aria-labelledby="reels-head">
+      <h2 class="reels-head" id="reels-head">Now showing</h2>
+
+        <article class="chapter" data-shape="wide" style="--glow: var(--orange)">
+          <div class="reel" style="--ratio: 16 / 9">
+            <span class="body">
+              <picture class="poster">
+                <source type="image/avif" srcset="/media/maze/poster-loop.avif" />
+                <img
+                  src="/media/maze/poster-loop.jpg"
+                  width="1920"
+                  height="1080"
+                  alt="The Maze of Time: the runner clears a glowing maze while enemies close in."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <video
+                class="loop"
+                muted
+                loop
+                playsinline
+                disablepictureinpicture
+                preload="none"
+                tabindex="-1"
+                aria-hidden="true"
+                data-av1="/media/maze/loop-8s.av1.mp4"
+                data-h264="/media/maze/loop-8s.mp4"
+              ></video>
+              <button class="hold" type="button" hidden>Pause</button>
+            </span>
+            <span class="stub">
+              <h3 class="name">The Maze of Time</h3>
+              <p class="hook">A decade deeper every 10 levels, from 1917 to the far side of the moon.</p>
+              <button
+                class="watch"
+                type="button"
+                data-name="The Maze of Time"
+                data-ratio="16 / 9"
+                data-poster="/media/maze/poster.jpg"
+                data-av1="/media/maze/trailer-1080p60.av1.mp4"
+                data-hevc="/media/maze/trailer-1080p60.hevc.mp4"
+                data-h264="/media/maze/trailer-1080p60.mp4"
+              >
+                Watch the trailer
+              </button>
+              <a class="addr" href="https://maze.coneyislandpottsville.com/">maze.ConeyIslandPottsville.com</a>
+            </span>
+          </div>
+
+          <ul class="shots">
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/maze-1-480.avif 480w,
+                    /src/img/shots/maze-1-720.avif 720w,
+                    /src/img/shots/maze-1-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/maze-1-720.webp"
+                    srcset="
+                    /src/img/shots/maze-1-480.webp 480w,
+                    /src/img/shots/maze-1-720.webp 720w,
+                    /src/img/shots/maze-1-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="The maze at level one in 1917, the runner at the bottom left"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Level 1, 1917</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/maze-2-480.avif 480w,
+                    /src/img/shots/maze-2-720.avif 720w,
+                    /src/img/shots/maze-2-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/maze-2-720.webp"
+                    srcset="
+                    /src/img/shots/maze-2-480.webp 480w,
+                    /src/img/shots/maze-2-720.webp 720w,
+                    /src/img/shots/maze-2-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="An amber 1931 maze with three enemies closing in"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">1931</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/maze-3-480.avif 480w,
+                    /src/img/shots/maze-3-720.avif 720w,
+                    /src/img/shots/maze-3-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/maze-3-720.webp"
+                    srcset="
+                    /src/img/shots/maze-3-480.webp 480w,
+                    /src/img/shots/maze-3-720.webp 720w,
+                    /src/img/shots/maze-3-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="The opening card explaining the run"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">How it works</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="chapter" data-shape="tall" style="--glow: var(--amber)">
+          <div class="reel" style="--ratio: 9 / 16">
+            <span class="body">
+              <picture class="poster">
+                <source type="image/avif" srcset="/media/slots/poster-loop.avif" />
+                <img
+                  src="/media/slots/poster-loop.jpg"
+                  width="1080"
+                  height="1920"
+                  alt="Tiki Bar Slots: three reels spin and settle in front of the tiki mural."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <video
+                class="loop"
+                muted
+                loop
+                playsinline
+                disablepictureinpicture
+                preload="none"
+                tabindex="-1"
+                aria-hidden="true"
+                data-av1="/media/slots/loop-8s.av1.mp4"
+                data-h264="/media/slots/loop-8s.mp4"
+              ></video>
+              <button class="hold" type="button" hidden>Pause</button>
+            </span>
+            <span class="stub">
+              <h3 class="name">Tiki Bar Slots</h3>
+              <p class="hook">Three reels of Coney Island suppers, and a bonus round at the grill.</p>
+              <button
+                class="watch"
+                type="button"
+                data-name="Tiki Bar Slots"
+                data-ratio="9 / 16"
+                data-poster="/media/slots/poster.jpg"
+                data-av1="/media/slots/trailer-1080p60.av1.mp4"
+                data-hevc="/media/slots/trailer-1080p60.hevc.mp4"
+                data-h264="/media/slots/trailer-1080p60.mp4"
+              >
+                Watch the trailer
+              </button>
+              <a class="addr" href="https://slots.coneyislandpottsville.com/">slots.ConeyIslandPottsville.com</a>
+            </span>
+          </div>
+
+          <ul class="shots">
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/slots-1-480.avif 480w,
+                    /src/img/shots/slots-1-720.avif 720w,
+                    /src/img/shots/slots-1-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/slots-1-720.webp"
+                    srcset="
+                    /src/img/shots/slots-1-480.webp 480w,
+                    /src/img/shots/slots-1-720.webp 720w,
+                    /src/img/shots/slots-1-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="Three matching plates lit across the centre line"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Three matching</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/slots-2-480.avif 480w,
+                    /src/img/shots/slots-2-720.avif 720w,
+                    /src/img/shots/slots-2-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/slots-2-720.webp"
+                    srcset="
+                    /src/img/shots/slots-2-480.webp 480w,
+                    /src/img/shots/slots-2-720.webp 720w,
+                    /src/img/shots/slots-2-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="The Grill Master bonus round with three toppings to pick"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Grill Master</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/slots-3-480.avif 480w,
+                    /src/img/shots/slots-3-720.avif 720w,
+                    /src/img/shots/slots-3-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/slots-3-720.webp"
+                    srcset="
+                    /src/img/shots/slots-3-480.webp 480w,
+                    /src/img/shots/slots-3-720.webp 720w,
+                    /src/img/shots/slots-3-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="The paytable listing what each combination pays"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">The paytable</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/slots-4-480.avif 480w,
+                    /src/img/shots/slots-4-720.avif 720w,
+                    /src/img/shots/slots-4-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/slots-4-720.webp"
+                    srcset="
+                    /src/img/shots/slots-4-480.webp 480w,
+                    /src/img/shots/slots-4-720.webp 720w,
+                    /src/img/shots/slots-4-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="Three wild Coney dogs across the centre line"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Three wilds</span>
+            </li>
+          </ul>
+        </article>
+
+        <article class="chapter" data-shape="wide" style="--glow: var(--gold)">
+          <div class="reel" style="--ratio: 16 / 9">
+            <span class="body">
+              <picture class="poster">
+                <source type="image/avif" srcset="/media/trivia/poster-loop.avif" />
+                <img
+                  src="/media/trivia/poster-loop.jpg"
+                  width="1920"
+                  height="1080"
+                  alt="Trivia Bowl: a question is answered and the ball moves down the field."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <video
+                class="loop"
+                muted
+                loop
+                playsinline
+                disablepictureinpicture
+                preload="none"
+                tabindex="-1"
+                aria-hidden="true"
+                data-av1="/media/trivia/loop-8s.av1.mp4"
+                data-h264="/media/trivia/loop-8s.mp4"
+              ></video>
+              <button class="hold" type="button" hidden>Pause</button>
+            </span>
+            <span class="stub">
+              <h3 class="name">Trivia Bowl</h3>
+              <p class="hook">Answers move the ball. Get it to the end zone.</p>
+              <button
+                class="watch"
+                type="button"
+                data-name="Trivia Bowl"
+                data-ratio="16 / 9"
+                data-poster="/media/trivia/poster.jpg"
+                data-av1="/media/trivia/trailer-1080p60.av1.mp4"
+                data-hevc="/media/trivia/trailer-1080p60.hevc.mp4"
+                data-h264="/media/trivia/trailer-1080p60.mp4"
+              >
+                Watch the trailer
+              </button>
+              <a class="addr" href="https://trivia.coneyislandpottsville.com/">trivia.ConeyIslandPottsville.com</a>
+            </span>
+          </div>
+
+          <ul class="shots">
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/trivia-1-480.avif 480w,
+                    /src/img/shots/trivia-1-720.avif 720w,
+                    /src/img/shots/trivia-1-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/trivia-1-720.webp"
+                    srcset="
+                    /src/img/shots/trivia-1-480.webp 480w,
+                    /src/img/shots/trivia-1-720.webp 720w,
+                    /src/img/shots/trivia-1-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="A 1925 question with the right answer lit green"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Answer's good</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/trivia-2-480.avif 480w,
+                    /src/img/shots/trivia-2-720.avif 720w,
+                    /src/img/shots/trivia-2-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/trivia-2-720.webp"
+                    srcset="
+                    /src/img/shots/trivia-2-480.webp 480w,
+                    /src/img/shots/trivia-2-720.webp 720w,
+                    /src/img/shots/trivia-2-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="Touchdown across the field, and the extra point to come"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Touchdown</span>
+            </li>
+            <li class="shot">
+              <span class="frame">
+                <picture>
+                  <source
+                    type="image/avif"
+                    srcset="
+                    /src/img/shots/trivia-3-480.avif 480w,
+                    /src/img/shots/trivia-3-720.avif 720w,
+                    /src/img/shots/trivia-3-960.avif 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                  />
+                  <img
+                    src="/src/img/shots/trivia-3-720.webp"
+                    srcset="
+                    /src/img/shots/trivia-3-480.webp 480w,
+                    /src/img/shots/trivia-3-720.webp 720w,
+                    /src/img/shots/trivia-3-960.webp 960w
+                    "
+                    sizes="(min-width: 1000px) 30vw, (min-width: 640px) 32vw, calc(100vw - 32px)"
+                    width="960"
+                    height="540"
+                    alt="Fireworks over the final score, Coney Dogs 14, Coney Burgers 6"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </span>
+              <span class="cap">Final, 14-6</span>
+            </li>
+          </ul>
+        </article>
+    </section>
+
+    <dialog class="theatre" aria-labelledby="theatre-name">
+      <form method="dialog" class="theatre-bar">
+        <span class="theatre-name" id="theatre-name"></span>
+        <button class="shut" type="submit" aria-label="Close the trailer">Close</button>
+      </form>
+      <video class="film" controls playsinline preload="none"></video>
+    </dialog>
   </body>
 </html>
