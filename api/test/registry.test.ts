@@ -22,7 +22,29 @@ function validate(game: string, run: Record<string, unknown>): Promise<Response>
   return app.fetch(request, env, createExecutionContext());
 }
 
+function submit(game: string, run: Record<string, unknown>): Promise<Response> {
+  const request = new Request(`${BASE}/v1/games/${game}/submissions`, {
+    method: "POST",
+    headers: { "content-type": "application/json", "cf-connecting-ip": freshIp() },
+    body: JSON.stringify({ submissionId: crypto.randomUUID(), client: game, initials: "PET", ...run }),
+  });
+  return app.fetch(request, env, createExecutionContext());
+}
+
 describe("the production registry", () => {
+  it("requires a proof of play before storing a run for either game", async () => {
+    for (const [game, run] of [
+      ["slots", { win: 250 }],
+      ["trivia", { points: 14, margin: 7, correct: 12 }],
+    ] as const) {
+      const refused = await submit(game, run);
+      expect(refused.status).toBe(403);
+      expect(await body(refused)).toEqual({ error: "proof required" });
+      const board = await body<{ entries: unknown[] }>(await get(`/v1/games/${game}/board`));
+      expect(board.entries).toHaveLength(0);
+    }
+  });
+
   it("lists the Trivia Bowl", async () => {
     const data = await body<{ games: Array<Record<string, unknown>> }>(await get("/v1/games"));
     expect(data.games.find((game) => game.id === "trivia")).toMatchObject({
@@ -30,6 +52,7 @@ describe("the production registry", () => {
       listed: true,
       board: 10,
       clients: ["trivia"],
+      proof: "turnstile",
     });
   });
 
@@ -63,6 +86,7 @@ describe("the production registry", () => {
       listed: true,
       board: 10,
       clients: ["slots"],
+      proof: "turnstile",
       fields: { win: { type: "integer", required: true, min: 10, max: 250, step: 5, precision: 0, onInvalid: "reject" } },
       ranking: [{ field: "win", order: "desc", unknown: "last" }],
       columns: [{ field: "win", label: "Win", format: "integer" }],
