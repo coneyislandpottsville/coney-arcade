@@ -13,16 +13,21 @@ export function freshIp(): string {
   return `10.${(n >> 16) & 255}.${(n >> 8) & 255}.${n & 255}`;
 }
 
-export function call(path: string, init: RequestInit = {}, ip: string = freshIp()): Promise<Response> {
+export function call(
+  path: string,
+  init: RequestInit = {},
+  ip: string = freshIp(),
+  base: string = BASE,
+): Promise<Response> {
   const headers = new Headers(init.headers);
   if (!headers.has("cf-connecting-ip")) headers.set("cf-connecting-ip", ip);
-  return app.fetch(new Request(BASE + path, { ...init, headers }), env, createExecutionContext());
+  return app.fetch(new Request(base + path, { ...init, headers }), env, createExecutionContext());
 }
 
 export function post(
   path: string,
   body: unknown,
-  options: { headers?: Record<string, string>; ip?: string } = {},
+  options: { headers?: Record<string, string>; ip?: string; base?: string } = {},
 ): Promise<Response> {
   return call(
     path,
@@ -32,6 +37,7 @@ export function post(
       body: typeof body === "string" ? body : JSON.stringify(body),
     },
     options.ip ?? freshIp(),
+    options.base,
   );
 }
 
