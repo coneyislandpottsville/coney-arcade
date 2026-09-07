@@ -1,3 +1,5 @@
+import "./leaderboards";
+
 // Each ticket answers the hand: it tilts toward the pointer or the finger and
 // settles back when it leaves. Everything else (lift, sheen, parallax) is CSS
 // driven from the --rx / --ry / --lift custom properties set here.

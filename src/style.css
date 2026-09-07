@@ -625,6 +625,71 @@ a.addr:focus-visible {
   border-top: 2px dashed rgb(42 22 8 / 0.4);
 }
 
+/* The leaderboard: a cream stub across the chapter, drawn only once the service
+   answers with entries for this game. */
+.board {
+  grid-column: 1 / -1;
+  padding: 10px 14px 12px;
+  border-radius: var(--radius);
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.5),
+    0 10px 26px -12px rgb(0 0 0 / 0.6);
+}
+
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.25;
+}
+
+.board-table caption {
+  padding: 0 0 8px;
+  text-align: left;
+  font-family: var(--display);
+  font-size: clamp(16px, 1.5vw, 22px);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.board-table th,
+.board-table td {
+  padding: 6px 8px;
+  text-align: right;
+  border-top: 1px dashed rgb(42 22 8 / 0.25);
+}
+
+.board-table th {
+  border-top: 0;
+  font-weight: 500;
+  font-size: 0.78em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(42 22 8 / 0.7);
+}
+
+.board-table .rank,
+.board-table .initials {
+  text-align: left;
+}
+
+.board-table .rank {
+  width: 2.2em;
+  color: rgb(42 22 8 / 0.6);
+}
+
+.board-table .initials {
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+.board-table tbody tr:first-child td {
+  color: color-mix(in srgb, var(--glow) 70%, var(--ink));
+}
+
 /* Wide: the reel's width follows its own aspect and the screenshots take the
    rest, so a landscape game leaves a single narrow column and a portrait one
    leaves a broad two-column block that sits against the middle of the reel. */
