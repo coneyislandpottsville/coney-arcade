@@ -3,11 +3,15 @@
 //   public/favicon.svg        a cream ticket carrying the mark
 //   public/favicon.ico        the same at 16, 32 and 48 px
 //   public/apple-touch-icon.png  180 px, full bleed for iOS to round
-//   public/og.jpg             1200x630, rendered at 2x and resampled down
+//   public/og.v<N>.jpg          1200x630, rendered at 2x and resampled down; bump OG_VERSION when the
+//                             card changes, so every share refetches it instead of a cached render
 //
 //   node tools/social/render.cjs
 const { chromium } = require("playwright");
 const fs = require("fs");
+
+const OG_VERSION = 2;
+const OG_FILE = `og.v${OG_VERSION}.jpg`;
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..", "..");
@@ -132,10 +136,10 @@ async function rasterize(page, svg, size, transparent) {
     },
     ["data:image/png;base64," + big.toString("base64"), 1200, 630],
   );
-  fs.writeFileSync(at("public", "og.jpg"), Buffer.from(jpeg.split(",")[1], "base64"));
+  fs.writeFileSync(at("public", OG_FILE), Buffer.from(jpeg.split(",")[1], "base64"));
 
   await browser.close();
-  for (const f of ["src/img/c-mark.svg", "public/favicon.svg", "public/favicon.ico", "public/apple-touch-icon.png", "public/og.jpg"]) {
+  for (const f of ["src/img/c-mark.svg", "public/favicon.svg", "public/favicon.ico", "public/apple-touch-icon.png", `public/${OG_FILE}`]) {
     console.log(f.padEnd(30), (fs.statSync(at(f)).size / 1024).toFixed(1) + " KB");
   }
 })();

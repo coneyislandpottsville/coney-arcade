@@ -1,4 +1,4 @@
-<p><a href="https://arcade.coneyislandpottsville.com"><img src="public/og.jpg" alt="The Coney Island Pottsville Arcade share card: the masthead beside three stacked game tickets, Tiki Bar Slots on top, The Maze of Time and Trivia Bowl beneath"></a></p>
+<p><a href="https://arcade.coneyislandpottsville.com"><img src="public/og.v2.jpg" alt="The Coney Island Pottsville Arcade share card: the masthead beside three stacked game tickets, Tiki Bar Slots on top, The Maze of Time and Trivia Bowl beneath"></a></p>
 
 # The Coney Island Pottsville Arcade
 
