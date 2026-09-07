@@ -1,0 +1,15 @@
+{
+  "$schema": "./schema.json",
+  "id": "slots",
+  "name": "Tiki Bar Slots",
+  "listed": true,
+  "board": 10,
+  "clients": ["slots"],
+  "origins": ["https://slots.coneyislandpottsville.com"],
+  "initials": { "default": "TKI" },
+  "fields": {
+    "win": { "type": "integer", "required": true, "min": 10, "max": 250, "step": 5 }
+  },
+  "ranking": [{ "field": "win", "order": "desc" }],
+  "columns": [{ "field": "win", "label": "Win" }]
+}

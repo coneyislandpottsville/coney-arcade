@@ -55,4 +55,41 @@ describe("the production registry", () => {
     expect(spare.status).toBe(200);
     expect(await body(spare)).toMatchObject({ ok: true, normalized: { points: 7, margin: 1, correct: null } });
   });
+
+  it("lists Tiki Bar Slots", async () => {
+    const data = await body<{ games: Array<Record<string, unknown>> }>(await get("/v1/games"));
+    expect(data.games.find((game) => game.id === "slots")).toMatchObject({
+      name: "Tiki Bar Slots",
+      listed: true,
+      board: 10,
+      clients: ["slots"],
+      fields: { win: { type: "integer", required: true, min: 10, max: 250, step: 5, precision: 0, onInvalid: "reject" } },
+      ranking: [{ field: "win", order: "desc", unknown: "last" }],
+      columns: [{ field: "win", label: "Win", format: "integer" }],
+    });
+  });
+
+  it("takes a Tiki Bar Slots win and refuses one the pay tables cannot produce", async () => {
+    const ok = await validate("slots", { win: 250 });
+    expect(ok.status).toBe(200);
+    expect(await body(ok)).toMatchObject({ ok: true, normalized: { initials: "PET", win: 250 } });
+
+    const refused: Array<[Record<string, unknown>, string]> = [
+      [{ win: 5 }, "win must be at least 10"],
+      [{ win: 255 }, "win must be at most 250"],
+      [{ win: 62 }, "win must be a multiple of 5"],
+      [{ win: 250.5 }, "win must be an integer"],
+      [{}, "win is required"],
+    ];
+    for (const [run, problem] of refused) {
+      const response = await validate("slots", run);
+      expect(response.status).toBe(400);
+      expect(await body(response)).toEqual({ ok: false, problems: [problem] });
+    }
+
+    const spare = await validate("slots", { win: 10, streak: 3 });
+    expect(spare.status).toBe(200);
+    const { normalized } = await body<{ normalized: Record<string, unknown> }>(spare);
+    expect(normalized).toEqual({ submissionId: expect.any(String), client: "slots", initials: "PET", win: 10 });
+  });
 });
