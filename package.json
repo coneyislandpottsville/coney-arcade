@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview --host",
     "check": "tsc --noEmit && npm run api:check",
-    "api:dev": "wrangler dev -c api/wrangler.jsonc",
+    "api:dev": "wrangler dev -c api/wrangler.jsonc --local-upstream localhost",
     "api:types": "wrangler types api/worker-configuration.d.ts -c api/wrangler.jsonc",
     "api:check": "npm run api:types && node --experimental-strip-types api/scripts/check.mjs && tsc --noEmit -p api",
     "api:test": "vitest run -c api/vitest.config.ts",
