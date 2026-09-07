@@ -1,0 +1,72 @@
+{
+  "$schema": "./schema.json",
+  "id": "sharp-mountain",
+  "name": "Sharp Mountain",
+  "listed": true,
+  "board": 10,
+  "clients": [
+    "sharp-mountain"
+  ],
+  "origins": [
+    "https://sharpmountain.coneyislandpottsville.com"
+  ],
+  "initials": {
+    "default": "SMT"
+  },
+  "proof": "turnstile",
+  "fields": {
+    "time": {
+      "type": "decimal",
+      "required": true,
+      "precision": 3,
+      "min": 20,
+      "max": 240
+    },
+    "rawTime": {
+      "type": "decimal",
+      "precision": 3,
+      "min": 26,
+      "max": 240,
+      "onInvalid": "unknown"
+    },
+    "hotDogs": {
+      "type": "integer",
+      "min": 0,
+      "max": 40,
+      "onInvalid": "unknown"
+    },
+    "burgers": {
+      "type": "integer",
+      "min": 0,
+      "max": 10,
+      "onInvalid": "unknown"
+    },
+    "seed": {
+      "type": "integer",
+      "min": 0,
+      "max": 4294967295,
+      "onInvalid": "unknown"
+    }
+  },
+  "ranking": [
+    {
+      "field": "time",
+      "order": "asc"
+    }
+  ],
+  "columns": [
+    {
+      "field": "time",
+      "label": "Time",
+      "format": "decimal"
+    },
+    {
+      "field": "hotDogs",
+      "label": "Dogs"
+    },
+    {
+      "field": "burgers",
+      "label": "Burgers"
+    }
+  ]
+}
