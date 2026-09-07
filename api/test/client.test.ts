@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createLeaderboards, fetchBoards, formatValue, type StorageLike } from "../client/leaderboards.ts";
+import { createLeaderboards, fetchBoards, formatValue, type Options, type StorageLike } from "../client/leaderboards.ts";
 
 function memoryStorage(): StorageLike & { data: Map<string, string> } {
   const data = new Map<string, string>();
@@ -31,16 +31,22 @@ const accepted = (rank: number) => ({
   body: { duplicate: false, entry: { rank, initials: "PET", client: "maze2d", submittedAt: "2026-09-06T00:00:00.000Z", score: 840 }, board: [] },
 });
 
-function client(fetchImpl: typeof fetch, storage: StorageLike, clock: { now: number }) {
-  return createLeaderboards({
+const ID = "9b2e6c1a-6a1f-4e3b-9d3c-1d2f3a4b5c6d";
+
+function options(fetchImpl: typeof fetch, storage: StorageLike, clock: { now: number }): Options {
+  return {
     game: "maze",
     client: "maze2d",
     baseUrl: "https://leaderboards.test/",
     storage,
     fetch: fetchImpl,
     now: () => clock.now,
-    uuid: () => "9b2e6c1a-6a1f-4e3b-9d3c-1d2f3a4b5c6d",
-  });
+    uuid: () => ID,
+  };
+}
+
+function client(fetchImpl: typeof fetch, storage: StorageLike, clock: { now: number }) {
+  return createLeaderboards(options(fetchImpl, storage, clock));
 }
 
 describe("createLeaderboards", () => {
@@ -55,7 +61,7 @@ describe("createLeaderboards", () => {
       initials: "PET",
       score: 840,
       playTime: 33.2,
-      submissionId: "9b2e6c1a-6a1f-4e3b-9d3c-1d2f3a4b5c6d",
+      submissionId: ID,
       client: "maze2d",
     });
     expect(boards.pending()).toBe(0);
@@ -115,6 +121,51 @@ describe("createLeaderboards", () => {
     const boards = createLeaderboards({ game: "maze", client: "maze2d", storage, fetch: impl, now: () => 0 });
     for (let i = 0; i < 25; i++) await boards.submit({ initials: "PET", score: 10 + i * 10 });
     expect(boards.pending()).toBe(20);
+  });
+
+  it("asks the proof provider before every attempt and sends what it gives", async () => {
+    const storage = memoryStorage();
+    const clock = { now: 1000 };
+    const { impl, calls } = fakeFetch([
+      "offline",
+      { status: 403, body: { error: "proof rejected", codes: ["timeout-or-duplicate"] } },
+      accepted(1),
+    ]);
+    const asked: string[] = [];
+    const tokens = ["tok-1", "tok-2", "tok-3"];
+    const boards = createLeaderboards({
+      ...options(impl, storage, clock),
+      token: async (submissionId) => {
+        asked.push(submissionId);
+        return tokens.shift() ?? null;
+      },
+    });
+    expect(await boards.submit({ initials: "PET", score: 840 })).toEqual({ status: "pending", attempts: 1 });
+    clock.now += 5_000;
+    expect(await boards.flush()).toEqual([{ status: "pending", attempts: 2 }]);
+    expect(boards.pending()).toBe(1);
+    clock.now += 30_000;
+    expect((await boards.flush())[0]).toMatchObject({ status: "accepted", rank: 1 });
+    expect(asked).toEqual([ID, ID, ID]);
+    expect(calls.map((c) => c.body?.token)).toEqual(["tok-1", "tok-2", "tok-3"]);
+    expect(boards.pending()).toBe(0);
+  });
+
+  it("posts without a token when there is no provider, or when the provider has nothing or fails", async () => {
+    const storage = memoryStorage();
+    const clock = { now: 0 };
+    const { impl, calls } = fakeFetch([accepted(1), accepted(1), accepted(1)]);
+    const base = options(impl, storage, clock);
+    await createLeaderboards(base).submit({ initials: "PET", score: 840 });
+    await createLeaderboards({ ...base, token: async () => null }).submit({ initials: "PET", score: 850 });
+    await createLeaderboards({
+      ...base,
+      token: async () => {
+        throw new Error("no widget");
+      },
+    }).submit({ initials: "PET", score: 860 });
+    expect(calls).toHaveLength(3);
+    for (const c of calls) expect(c.body).not.toHaveProperty("token");
   });
 
   it("reads a board and validates a run", async () => {

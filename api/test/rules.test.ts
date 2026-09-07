@@ -6,6 +6,7 @@ import httpOrigin from "./fixtures/invalid/http-origin.json";
 import rankingUndeclared from "./fixtures/invalid/ranking-undeclared.json";
 import reservedField from "./fixtures/invalid/reserved-field.json";
 import unknownProperty from "./fixtures/invalid/unknown-property.json";
+import gate from "./fixtures/gate.json";
 import maze from "./fixtures/maze.json";
 import sprint from "./fixtures/sprint.json";
 
@@ -18,7 +19,18 @@ describe("validateGame", () => {
     expect(result.game.fields.playTime).toMatchObject({ type: "decimal", required: false, precision: 3, onInvalid: "unknown" });
     expect(result.game.ranking[0]).toEqual({ field: "score", order: "desc", unknown: "last" });
     expect(result.game.columns[0]).toEqual({ field: "score", label: "Score", format: "integer" });
+    expect(result.game).not.toHaveProperty("proof");
     expect(validateGame(sprint).ok).toBe(true);
+    const gated = validateGame(gate);
+    expect(gated.ok && gated.game.proof).toBe("turnstile");
+  });
+
+  it("takes a proof declaration of turnstile only, and keeps token out of the field names", () => {
+    expect(validateGame({ ...maze, proof: "turnstile" }).ok).toBe(true);
+    const other = validateGame({ ...maze, proof: "captcha" });
+    expect(!other.ok && other.problems.join("\n")).toMatch(/proof must be "turnstile"/);
+    const reserved = validateGame({ ...maze, fields: { ...maze.fields, token: { type: "integer" } } });
+    expect(!reserved.ok && reserved.problems.join("\n")).toMatch(/"token" is a reserved name/);
   });
 
   it("rejects each invalid fixture with a reason", () => {

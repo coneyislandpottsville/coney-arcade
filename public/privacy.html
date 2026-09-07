@@ -103,6 +103,12 @@
         To slow a flood of submissions, the service derives a temporary key from your connection and holds
         it in memory for about a minute. It is never stored.
       </p>
+      <p>
+        When you post a run, the game asks Cloudflare Turnstile to confirm that a person, not a script, is
+        posting. It usually decides without showing anything; now and then it shows a checkbox to tick. The
+        proof it makes names the run and the game's address, is checked once by the service, and is never
+        stored.
+      </p>
 
       <h2>On your device</h2>
       <p>

@@ -33,6 +33,7 @@ export type Options = {
   timeoutMs?: number;
   now?: () => number;
   uuid?: () => string;
+  token?: (submissionId: string) => Promise<string | null>;
 };
 
 export type Leaderboards = {
@@ -98,11 +99,22 @@ export function createLeaderboards(options: Options): Leaderboards {
     }
   };
 
+  const proofFor = async (submissionId: string): Promise<string | null> => {
+    if (!options.token) return null;
+    try {
+      const token = await options.token(submissionId);
+      return typeof token === "string" && token.length > 0 ? token : null;
+    } catch {
+      return null;
+    }
+  };
+
   const attempt = async (item: Pending): Promise<SubmitResult> => {
+    const token = await proofFor(item.submissionId);
     const { status, data } = await request(`/v1/games/${options.game}/submissions`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...item.run, submissionId: item.submissionId, client: options.client }),
+      body: JSON.stringify({ ...item.run, submissionId: item.submissionId, client: options.client, ...(token ? { token } : {}) }),
     });
     const record = isRecord(data) ? data : {};
     if (status === 200 && isRecord(record.entry) && Array.isArray(record.board)) {

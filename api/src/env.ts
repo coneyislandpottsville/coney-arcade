@@ -6,4 +6,5 @@ export interface Env {
   DB: D1Database;
   SUBMIT_LIMITER: Limiter;
   VALIDATE_LIMITER: Limiter;
+  TURNSTILE_SECRET?: string;
 }

@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [
     cloudflareTest({
       wrangler: { configPath: join(root, "wrangler.jsonc") },
-      miniflare: { bindings: { TEST_MIGRATIONS: migrations } },
+      miniflare: { bindings: { TEST_MIGRATIONS: migrations, TURNSTILE_SECRET: "test-secret" } },
     }),
   ],
 });

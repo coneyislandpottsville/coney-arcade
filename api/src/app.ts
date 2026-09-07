@@ -1,12 +1,13 @@
 import { board, boardStatement, findSubmission, insertEntry, rankOf, toEntry, type EntryRow, type StoredSubmission } from "./board.ts";
-import { allowedOrigin, corsHeaders, preflight } from "./cors.ts";
+import { allowedOrigin, corsHeaders, isLocal, preflight } from "./cors.ts";
 import type { Env, Limiter } from "./env.ts";
 import { encodeRankKey } from "./rank.ts";
 import { buildRegistry } from "./rules.ts";
+import { MAX_TOKEN_LENGTH, PROOF_ACTION, verifyProof } from "./turnstile.ts";
 import type { Entry, Game } from "./types.ts";
 import { normalizeSubmission, type Normalized } from "./validate.ts";
 
-const MAX_BODY_BYTES = 2048;
+const MAX_BODY_BYTES = 4096;
 const MAX_BOARD_LIMIT = 100;
 const MAX_COMBINED_LIMIT = 25;
 const DEFAULT_COMBINED_LIMIT = 5;
@@ -15,13 +16,16 @@ const POST_METHODS = "POST, OPTIONS";
 
 type Handler = { fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> };
 
-export function createApp(games: unknown[]): Handler {
+export type AppOptions = { fetch?: typeof fetch };
+
+export function createApp(games: unknown[], options: AppOptions = {}): Handler {
   const registry = buildRegistry(games);
+  const fetchImpl: typeof fetch = options.fetch ?? ((input, init) => fetch(input, init));
 
   return {
     async fetch(request: Request, env: Env): Promise<Response> {
       try {
-        return await route(registry, request, env);
+        return await route(registry, request, env, fetchImpl);
       } catch (error) {
         console.error("leaderboards request failed:", error);
         return json({ error: "unavailable" }, 500);
@@ -30,7 +34,7 @@ export function createApp(games: unknown[]): Handler {
   };
 }
 
-async function route(registry: Map<string, Game>, request: Request, env: Env): Promise<Response> {
+async function route(registry: Map<string, Game>, request: Request, env: Env, fetchImpl: typeof fetch): Promise<Response> {
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
   const method = request.method.toUpperCase();
@@ -84,6 +88,9 @@ async function route(registry: Map<string, Game>, request: Request, env: Env): P
 
   if (!(await allow(env.SUBMIT_LIMITER, `sub:${game.id}:${await hash(ip)}`))) return withCors(rateLimited(), origin);
 
+  const refused = await checkProof(game, body.value, value.submissionId, request, env, fetchImpl, ip);
+  if (refused) return withCors(refused, origin);
+
   const rankKey = encodeRankKey(game, value.units);
   const inserted = await insertEntry(env.DB, {
     gameId: game.id,
@@ -101,6 +108,37 @@ async function route(registry: Map<string, Game>, request: Request, env: Env): P
 
   const row: EntryRow = { id: inserted.id, initials: value.initials, client: value.client, fields: value.canonical, created_at: inserted.created_at };
   return withCors(await answer(env.DB, game, row, rankKey, false), origin);
+}
+
+async function checkProof(
+  game: Game,
+  body: unknown,
+  submissionId: string,
+  request: Request,
+  env: Env,
+  fetchImpl: typeof fetch,
+  ip: string,
+): Promise<Response | null> {
+  const token = isRecord(body) && typeof body.token === "string" ? body.token : null;
+  if (token === null) return game.proof === "turnstile" ? json({ error: "proof required" }, 403) : null;
+  if (token.length === 0 || token.length > MAX_TOKEN_LENGTH) return proofRejected(["invalid-input-response"]);
+  if (!env.TURNSTILE_SECRET) {
+    console.error("TURNSTILE_SECRET is not set; a proof arrived that cannot be verified");
+    return json({ error: "unavailable" }, 503);
+  }
+  const proof = await verifyProof(fetchImpl, env.TURNSTILE_SECRET, token, ip);
+  if (proof.ok === null) return json({ error: "unavailable" }, 503);
+  if (!proof.ok) return proofRejected(proof.codes);
+  if (isLocal(request)) return null;
+  const hostnames = game.origins.map((origin) => new URL(origin).hostname);
+  if (!hostnames.includes(proof.hostname)) return proofRejected(["hostname-mismatch"]);
+  if (proof.action !== PROOF_ACTION) return proofRejected(["action-mismatch"]);
+  if (proof.cdata?.toLowerCase() !== submissionId) return proofRejected(["cdata-mismatch"]);
+  return null;
+}
+
+function proofRejected(codes: string[]): Response {
+  return json({ error: "proof rejected", codes }, 403);
 }
 
 async function answerExisting(db: D1Database, game: Game, value: Normalized, existing: StoredSubmission): Promise<Response> {
@@ -157,6 +195,9 @@ async function readJson(request: Request): Promise<Body> {
     return { ok: false, response: json({ error: "malformed json" }, 400) };
   }
 }
+
+const isRecord = (v: unknown): v is Record<string, unknown> =>
+  typeof v === "object" && v !== null && !Array.isArray(v);
 
 async function allow(limiter: Limiter | undefined, key: string): Promise<boolean> {
   if (!limiter) return true;
