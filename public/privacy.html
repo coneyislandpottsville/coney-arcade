@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leaderboard privacy · The Coney Island Pottsville Arcade</title>
+    <meta
+      name="description"
+      content="What the Coney Island Pottsville Arcade leaderboards store when you post a score, what they never store, and how to have a score removed."
+    />
+    <meta name="theme-color" content="#1a110c" />
+    <link rel="canonical" href="https://arcade.coneyislandpottsville.com/privacy" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <style>
+      @font-face {
+        font-family: "Alfa Slab One";
+        src: url("/fonts/AlfaSlabOne-400-latin.woff2") format("woff2");
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Oswald";
+        src: url("/fonts/Oswald-var.v1.woff2") format("woff2");
+        font-weight: 200 700;
+        font-display: swap;
+      }
+      html {
+        background: #1a110c;
+        color: #f3e6c8;
+        font-family: "Oswald", "Arial Narrow", sans-serif;
+        font-weight: 300;
+        font-size: 1.125rem;
+        line-height: 1.55;
+      }
+      body {
+        margin: 0;
+        padding: 3rem 1.25rem 4rem;
+      }
+      main {
+        max-width: 38rem;
+        margin: 0 auto;
+      }
+      h1 {
+        font-family: "Alfa Slab One", "Arial Black", serif;
+        font-weight: 400;
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        line-height: 1.1;
+        margin: 0 0 0.5rem;
+        color: #f0a13a;
+      }
+      .eyebrow {
+        margin: 0 0 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.8rem;
+        color: rgb(243 230 200 / 0.6);
+      }
+      h2 {
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin: 2rem 0 0.4rem;
+        color: #f2673a;
+      }
+      p {
+        margin: 0 0 0.8rem;
+      }
+      a {
+        color: #f0a13a;
+      }
+      .back {
+        display: inline-block;
+        margin-top: 2.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">The Coney Island Pottsville Arcade</p>
+      <h1>Leaderboard privacy</h1>
+      <p>
+        The arcade's games share one leaderboard service. Every game that links to this page uses it, and
+        this is the whole of what it does with your play.
+      </p>
+
+      <h2>What a score carries</h2>
+      <p>
+        Nothing leaves the game until you choose to put a run on the board. A posted run carries the three
+        initials you typed, the numbers the game reports for that run, such as a score, a time or a level,
+        which game and which version of it sent the run, a random identifier for the run, and the moment it
+        arrived. That is the entire record, and it is public by design.
+      </p>
+
+      <h2>What it never carries</h2>
+      <p>
+        No names, accounts or e-mail addresses. No cookies, no advertising, no tracking. Your IP address is
+        never written down. Nothing links a run to you beyond the initials you chose.
+      </p>
+
+      <h2>Keeping the board honest</h2>
+      <p>
+        To slow a flood of submissions, the service derives a temporary key from your connection and holds
+        it in memory for about a minute. It is never stored.
+      </p>
+
+      <h2>On your device</h2>
+      <p>
+        Settings, your best runs and any run that has not reached the board yet stay in your browser or in
+        the game's own save file, and go when you clear them.
+      </p>
+
+      <h2>Where it runs</h2>
+      <p>The leaderboards run on Cloudflare, which processes the requests that serve them. All traffic is HTTPS.</p>
+
+      <h2>Removal</h2>
+      <p>
+        Want a run taken down? Write to <a href="mailto:sales@schuylkillhub.com">sales@schuylkillhub.com</a>
+        with the game, the initials and the score, and it will be removed.
+      </p>
+
+      <a class="back" href="/">← back to the arcade</a>
+    </main>
+  </body>
+</html>
