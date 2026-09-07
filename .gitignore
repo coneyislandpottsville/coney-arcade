@@ -5,3 +5,5 @@ dist/
 .env.*
 *.local
 public/media/
+api/worker-configuration.d.ts
+.wrangler/

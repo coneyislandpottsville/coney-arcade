@@ -8,7 +8,15 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "check": "tsc --noEmit",
+    "check": "tsc --noEmit && npm run api:check",
+    "api:dev": "wrangler dev -c api/wrangler.jsonc",
+    "api:types": "wrangler types api/worker-configuration.d.ts -c api/wrangler.jsonc",
+    "api:check": "npm run api:types && node --experimental-strip-types api/scripts/check.mjs && tsc --noEmit -p api",
+    "api:test": "vitest run -c api/vitest.config.ts",
+    "api:migrate": "wrangler d1 migrations apply coney-arcade-leaderboards --remote -c api/wrangler.jsonc",
+    "api:migrate:local": "wrangler d1 migrations apply coney-arcade-leaderboards --local -c api/wrangler.jsonc",
+    "api:deploy": "wrangler deploy -c api/wrangler.jsonc",
+    "api:remove": "node api/scripts/remove.mjs",
     "media:stage": "node tools/media.mjs stage",
     "media:push": "node tools/media.mjs push",
     "media:pull": "node tools/media.mjs pull",
@@ -19,9 +27,14 @@
     "node": ">=22.12"
   },
   "devDependencies": {
+    "@cloudflare/vitest-plugin": "^1.1.4",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
     "lighthouse": "^13.4.1",
     "playwright": "^1.63.0",
     "typescript": "^7.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.129.0"
   }
 }
