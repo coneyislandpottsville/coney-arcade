@@ -35,6 +35,7 @@ export interface Game {
   fields: Record<string, FieldRule>;
   ranking: RankingComponent[];
   columns: Column[];
+  proof?: "turnstile";
 }
 
 export type FieldValues = Record<string, number | null>;

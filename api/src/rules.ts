@@ -4,7 +4,7 @@ import { cleanInitials, isBlocked } from "./initials.ts";
 export const ID_PATTERN = /^[a-z][a-z0-9-]{1,31}$/;
 export const FIELD_NAME_PATTERN = /^[a-z][A-Za-z0-9]{0,31}$/;
 export const ORIGIN_PATTERN = /^https:\/\/[a-z0-9.-]+$|^http:\/\/localhost(:\d{1,5})?$/;
-export const RESERVED_FIELDS = new Set(["initials", "client", "submissionId", "rank", "id", "submittedAt", "game"]);
+export const RESERVED_FIELDS = new Set(["initials", "client", "submissionId", "rank", "id", "submittedAt", "game", "token"]);
 
 const LIMITS = { fields: 8, ranking: 4, columns: 4, clients: 8, origins: 8, board: 100, name: 60, label: 16, precision: 6 };
 
@@ -23,7 +23,7 @@ export function validateGame(input: unknown): GameResult {
   };
   if (!isRecord(input)) return { ok: false, problems: ["a game must be a JSON object"] };
 
-  const known = new Set(["$schema", "id", "name", "listed", "board", "clients", "origins", "initials", "fields", "ranking", "columns"]);
+  const known = new Set(["$schema", "id", "name", "listed", "board", "clients", "origins", "initials", "fields", "ranking", "columns", "proof"]);
   for (const key of Object.keys(input)) if (!known.has(key)) bad(`unknown property "${key}"`);
 
   const id = isStr(input.id) && ID_PATTERN.test(input.id) ? input.id : (bad("id must match ^[a-z][a-z0-9-]{1,31}$"), "");
@@ -80,10 +80,19 @@ export function validateGame(input: unknown): GameResult {
   const ranking = validateRanking(input.ranking, fields, bad);
   const columns = validateColumns(input.columns, fields, bad);
 
+  let proof: Game["proof"];
+  if (input.proof !== undefined) {
+    if (input.proof === "turnstile") proof = "turnstile";
+    else bad('proof must be "turnstile"');
+  }
+
   if (problems.length > 0) return { ok: false, problems };
   return {
     ok: true,
-    game: { id, name, listed, board, clients, origins, initials: { default: defaultInitials }, fields, ranking, columns },
+    game: {
+      id, name, listed, board, clients, origins, initials: { default: defaultInitials }, fields, ranking, columns,
+      ...(proof ? { proof } : {}),
+    },
   };
 }
 

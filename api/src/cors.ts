@@ -3,11 +3,15 @@ import type { Game } from "./types.ts";
 const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1"]);
 const LOCAL_ORIGIN = /^http:\/\/localhost(:\d{1,5})?$/;
 
+export function isLocal(request: Request): boolean {
+  return LOCAL_HOSTS.has(new URL(request.url).hostname);
+}
+
 export function allowedOrigin(game: Game, request: Request): string | null {
   const origin = request.headers.get("origin");
   if (origin === null) return null;
   if (game.origins.includes(origin)) return origin;
-  return LOCAL_ORIGIN.test(origin) && LOCAL_HOSTS.has(new URL(request.url).hostname) ? origin : null;
+  return LOCAL_ORIGIN.test(origin) && isLocal(request) ? origin : null;
 }
 
 export function corsHeaders(origin: string | null, methods: string): Record<string, string> {

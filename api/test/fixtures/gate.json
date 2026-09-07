@@ -1,0 +1,16 @@
+{
+  "$schema": "../../games/schema.json",
+  "id": "gate",
+  "name": "Gate",
+  "listed": false,
+  "board": 5,
+  "clients": ["gate"],
+  "origins": ["https://gate.coneyislandpottsville.com"],
+  "initials": { "default": "GTE" },
+  "proof": "turnstile",
+  "fields": {
+    "laps": { "type": "integer", "required": true, "min": 1, "max": 99 }
+  },
+  "ranking": [{ "field": "laps", "order": "desc" }],
+  "columns": [{ "field": "laps", "label": "Laps" }]
+}
