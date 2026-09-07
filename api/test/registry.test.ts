@@ -36,6 +36,7 @@ describe("the production registry", () => {
     for (const [game, run] of [
       ["slots", { win: 250 }],
       ["trivia", { points: 14, margin: 7, correct: 12 }],
+      ["sharp-mountain", { time: 61.083, rawTime: 64.283, hotDogs: 22, burgers: 3, seed: 305419896 }],
     ] as const) {
       const refused = await submit(game, run);
       expect(refused.status).toBe(403);
@@ -115,5 +116,42 @@ describe("the production registry", () => {
     expect(spare.status).toBe(200);
     const { normalized } = await body<{ normalized: Record<string, unknown> }>(spare);
     expect(normalized).toEqual({ submissionId: expect.any(String), client: "slots", initials: "PET", win: 10 });
+  });
+
+  it("lists Sharp Mountain", async () => {
+    const data = await body<{ games: Array<Record<string, unknown>> }>(await get("/v1/games"));
+    expect(data.games.find((game) => game.id === "sharp-mountain")).toMatchObject({
+      name: "Sharp Mountain",
+      listed: true,
+      board: 10,
+      clients: ["sharp-mountain"],
+      proof: "turnstile",
+    });
+  });
+
+  it("takes a Sharp Mountain run and refuses a time the hill cannot produce", async () => {
+    const ok = await validate("sharp-mountain", { time: 61.083, rawTime: 64.283, hotDogs: 22, burgers: 3, seed: 305419896 });
+    expect(ok.status).toBe(200);
+    expect(await body(ok)).toMatchObject({
+      ok: true,
+      normalized: { initials: "PET", time: 61.083, rawTime: 64.283, hotDogs: 22, burgers: 3, seed: 305419896 },
+    });
+
+    const refused: Array<[Record<string, unknown>, string]> = [
+      [{ time: 19.5, rawTime: 26 }, "time must be at least 20"],
+      [{ time: 241, rawTime: 241 }, "time must be at most 240"],
+      [{ rawTime: 60 }, "time is required"],
+    ];
+    for (const [run, problem] of refused) {
+      const response = await validate("sharp-mountain", run);
+      expect(response.status).toBe(400);
+      expect(await body(response)).toEqual({ ok: false, problems: [problem] });
+    }
+
+    // More food than a hill holds is stored as unknown, not refused: the
+    // ranked field is fine and the forensic one degrades.
+    const spare = await validate("sharp-mountain", { time: 60, rawTime: 63, hotDogs: 41, burgers: 2, seed: 1 });
+    expect(spare.status).toBe(200);
+    expect(await body(spare)).toMatchObject({ ok: true, normalized: { time: 60, hotDogs: null, burgers: 2 } });
   });
 });
