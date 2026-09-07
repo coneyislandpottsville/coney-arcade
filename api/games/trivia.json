@@ -7,6 +7,7 @@
   "clients": ["trivia"],
   "origins": ["https://trivia.coneyislandpottsville.com"],
   "initials": { "default": "CIP" },
+  "proof": "turnstile",
   "fields": {
     "points": { "type": "integer", "required": true, "min": 6, "max": 14 },
     "margin": { "type": "integer", "required": true, "min": 1, "max": { "field": "points", "factor": 1 } },

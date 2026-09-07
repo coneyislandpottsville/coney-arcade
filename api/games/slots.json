@@ -7,6 +7,7 @@
   "clients": ["slots"],
   "origins": ["https://slots.coneyislandpottsville.com"],
   "initials": { "default": "TKI" },
+  "proof": "turnstile",
   "fields": {
     "win": { "type": "integer", "required": true, "min": 10, "max": 250, "step": 5 }
   },
