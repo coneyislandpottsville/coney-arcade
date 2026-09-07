@@ -1,0 +1,25 @@
+{
+  "$schema": "./schema.json",
+  "id": "maze",
+  "name": "The Maze of Time",
+  "listed": true,
+  "board": 10,
+  "clients": ["maze2d", "maze3d"],
+  "origins": ["https://maze.coneyislandpottsville.com"],
+  "initials": { "default": "CNY" },
+  "proof": "turnstile",
+  "fields": {
+    "score": { "type": "integer", "required": true, "min": 10, "max": 5000000, "step": 10 },
+    "playTime": { "type": "decimal", "precision": 3, "min": 0, "max": { "field": "score", "factor": 0.36 }, "onInvalid": "unknown" },
+    "levelReached": { "type": "integer", "min": 1, "max": 150 }
+  },
+  "ranking": [
+    { "field": "score", "order": "desc" },
+    { "field": "playTime", "order": "asc", "unknown": "last" }
+  ],
+  "columns": [
+    { "field": "score", "label": "Score" },
+    { "field": "playTime", "label": "Time", "format": "duration" },
+    { "field": "levelReached", "label": "Level" }
+  ]
+}
