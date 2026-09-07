@@ -1,0 +1,12 @@
+{
+  "id": "broken",
+  "name": "Broken",
+  "listed": false,
+  "board": 5,
+  "clients": ["broken"],
+  "origins": ["http://broken.example.com"],
+  "initials": { "default": "BRK" },
+  "fields": { "score": { "type": "integer", "required": true } },
+  "ranking": [{ "field": "score", "order": "desc" }],
+  "columns": [{ "field": "score", "label": "Score" }]
+}
