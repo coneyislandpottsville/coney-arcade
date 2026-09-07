@@ -200,4 +200,20 @@ describe("CORS", () => {
     const board = await call("/v1/games/maze/board", { headers: { origin: "https://anywhere.example" } });
     expect(board.headers.get("access-control-allow-origin")).toBe("*");
   });
+
+  it("admits a localhost origin only while the Worker itself runs on localhost", async () => {
+    const local = "http://localhost:4173";
+    const dev = "http://localhost:8787";
+    const preflight = await call(SUBMIT, { method: "OPTIONS", headers: { origin: local } }, freshIp(), dev);
+    expect(preflight.status).toBe(204);
+    expect(preflight.headers.get("access-control-allow-origin")).toBe(local);
+    const posted = await post(SUBMIT, run(), { headers: { origin: local }, base: dev });
+    expect(posted.status).toBe(200);
+    expect(posted.headers.get("access-control-allow-origin")).toBe(local);
+    const deployed = await post(SUBMIT, run(), { headers: { origin: local } });
+    expect(deployed.status).toBe(200);
+    expect(deployed.headers.get("access-control-allow-origin")).toBeNull();
+    const foreign = await call(SUBMIT, { method: "OPTIONS", headers: { origin: "https://evil.example" } }, freshIp(), dev);
+    expect(foreign.headers.get("access-control-allow-origin")).toBeNull();
+  });
 });

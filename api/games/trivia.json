@@ -1,0 +1,25 @@
+{
+  "$schema": "./schema.json",
+  "id": "trivia",
+  "name": "Trivia Bowl",
+  "listed": true,
+  "board": 10,
+  "clients": ["trivia"],
+  "origins": ["https://trivia.coneyislandpottsville.com"],
+  "initials": { "default": "CIP" },
+  "fields": {
+    "points": { "type": "integer", "required": true, "min": 6, "max": 14 },
+    "margin": { "type": "integer", "required": true, "min": 1, "max": { "field": "points", "factor": 1 } },
+    "correct": { "type": "integer", "min": 2, "max": 12, "onInvalid": "unknown" }
+  },
+  "ranking": [
+    { "field": "points", "order": "desc" },
+    { "field": "margin", "order": "desc" },
+    { "field": "correct", "order": "desc", "unknown": "last" }
+  ],
+  "columns": [
+    { "field": "points", "label": "Points" },
+    { "field": "margin", "label": "Margin" },
+    { "field": "correct", "label": "Correct" }
+  ]
+}
