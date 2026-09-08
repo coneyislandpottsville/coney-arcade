@@ -20,8 +20,9 @@
         --orange: #f2673a;
         --amber: #f0a13a;
         --gold: #c9a227;
+        --ice: #b7c6ce;
         --notch: 7px;
-        --w: 460px;
+        --w: 440px;
       }
       html,
       body {
@@ -99,7 +100,7 @@
         color: var(--cream);
       }
 
-      /* Three tickets, dealt as a hand. */
+      /* Four tickets, dealt as a hand. */
       .ticket {
         position: absolute;
         left: var(--x);
@@ -189,15 +190,19 @@
       <p class="seal"><img src="../../src/img/c-mark.svg" alt="" />Free to play</p>
       <p class="addr">arcade.ConeyIslandPottsville.com</p>
 
-      <div class="ticket" style="--x: 902px; --y: 452px; --r: -1deg; --glow: var(--gold); z-index: 1">
+      <div class="ticket" style="--x: 908px; --y: 452px; --r: 1.5deg; --glow: var(--ice); z-index: 0">
+        <span class="body"><img src="../../src/img/sharp-mountain-960.webp" alt="" /></span>
+        <span class="stub"><span class="name">Sharp Mountain</span><span class="site">sharpmountain.ConeyIslandPottsville.com</span></span>
+      </div>
+      <div class="ticket" style="--x: 902px; --y: 360px; --r: -1deg; --glow: var(--gold); z-index: 1">
         <span class="body"><img src="../../src/img/trivia-960.webp" alt="" /></span>
         <span class="stub"><span class="name">Trivia Bowl</span><span class="site">trivia.ConeyIslandPottsville.com</span></span>
       </div>
-      <div class="ticket" style="--x: 896px; --y: 342px; --r: 1.5deg; --glow: var(--orange); z-index: 2">
+      <div class="ticket" style="--x: 896px; --y: 268px; --r: 1.5deg; --glow: var(--orange); z-index: 2">
         <span class="body"><img src="../../src/img/maze-960.webp" alt="" /></span>
         <span class="stub"><span class="name">The Maze of Time</span><span class="site">maze.ConeyIslandPottsville.com</span></span>
       </div>
-      <div class="ticket" style="--x: 890px; --y: 232px; --r: -2deg; --glow: var(--amber); z-index: 3">
+      <div class="ticket" style="--x: 890px; --y: 176px; --r: -2deg; --glow: var(--amber); z-index: 3">
         <span class="body"><img src="../../src/img/tiki-960.webp" alt="" /></span>
         <span class="stub"><span class="name">Tiki Bar Slots</span><span class="site">slots.ConeyIslandPottsville.com</span></span>
       </div>

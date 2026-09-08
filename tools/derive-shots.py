@@ -3,8 +3,8 @@
     python tools/derive-shots.py
 
 Writes src/img/shots/<game>-<n>-<width>.avif and .webp, cropped to 16:9.
-Trivia has no gameplay screenshots in the library, so its stubs are frames
-pulled from the take the trailer was cut from.
+Trivia and Sharp Mountain have no gameplay screenshots in the library, so
+their stubs are frames pulled from the takes the trailers were cut from.
 """
 
 import subprocess
@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TMP = ROOT / ".tmp"
 OUT = ROOT / "src" / "img" / "shots"
 TAKE = TMP / "gameplay" / "trivia-gameplay-video-masters" / "trivia-bowl-final-1920x1080.mp4"
+RACER = TMP / "gameplay" / "sharp-mountain-gameplay-masters" / "takes" / "racer-132"
 
 WIDTHS = (480, 720, 960)
 
@@ -40,13 +41,21 @@ SHOTS = {
         (19.95, (0.36, 0.02, 1.00, 0.88)),
         (89.00, (0.36, 0.08, 1.00, 0.97)),
     ],
+    "sharp-mountain": [
+        (RACER.with_suffix(".title.png"), (0.30, 0.515, 0.70, 0.915)),
+        ((RACER.with_suffix(".mp4"), 3.10), (0.25, 0.08, 0.75, 0.64)),
+        ((RACER.with_suffix(".mp4"), 33.00), (0.25, 0.26, 0.75, 0.54)),
+    ],
 }
 
 
 def load(src) -> Image.Image:
     if isinstance(src, (int, float)):
+        src = (TAKE, src)
+    if isinstance(src, tuple):
+        take, seconds = src
         raw = subprocess.run(
-            ["ffmpeg", "-v", "error", "-ss", str(src), "-i", str(TAKE),
+            ["ffmpeg", "-v", "error", "-ss", str(seconds), "-i", str(take),
              "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-"],
             check=True, capture_output=True,
         ).stdout
