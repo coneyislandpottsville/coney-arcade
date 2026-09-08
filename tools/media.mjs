@@ -23,7 +23,7 @@ const BUCKET = "coney-arcade-media";
 const WRANGLER = "wrangler@4.127.0";
 const CACHE = "public,max-age=31536000,immutable";
 
-const GAMES = ["maze", "slots", "trivia"];
+const GAMES = ["maze", "slots", "trivia", "sharp-mountain"];
 const FILES = [
   "poster.avif", "poster.jpg",
   "poster-loop.avif", "poster-loop.jpg",
@@ -89,7 +89,7 @@ if (command === "stage") {
   writeFileSync(MANIFEST, `${JSON.stringify({ bucket: BUCKET, version, files }, null, 2)}\n`);
 
   const html = readFileSync(INDEX, "utf8");
-  const swapped = html.replace(/\/media\/(?:[0-9a-f]{8}\/)?(?=maze\/|slots\/|trivia\/)/g, `/media/${version}/`);
+  const swapped = html.replace(/\/media\/(?:[0-9a-f]{8}\/)?(?=maze\/|slots\/|trivia\/|sharp-mountain\/)/g, `/media/${version}/`);
   writeFileSync(INDEX, swapped);
 
   const bytes = sources.reduce((n, { source }) => n + statSync(source).size, 0);
