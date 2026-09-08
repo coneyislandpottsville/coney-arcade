@@ -27,7 +27,7 @@ const table = (game: Listed): HTMLTableElement => {
   t.className = "board-table";
 
   const caption = document.createElement("caption");
-  caption.textContent = "Leaderboard";
+  caption.textContent = "Hall of Fame";
   t.append(caption);
 
   const head = document.createElement("tr");
