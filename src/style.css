@@ -65,6 +65,7 @@
   --orange: #f2673a;
   --amber: #f0a13a;
   --gold: #c9a227;
+  --ice: #b7c6ce;
   --display: "Alfa Slab One", "Alfa Slab One Fallback", "Arial Black", serif;
   --text: Oswald, "Oswald Fallback", "Oswald Fallback Wide", "Arial Narrow", sans-serif;
   --gutter: clamp(16px, 3vw, 64px);
@@ -355,7 +356,7 @@ body {
   }
 }
 
-/* Wide: the poster's row, three tickets abreast, seal at the top right. */
+/* Wide: the poster's row, the tickets two by two and then four abreast, seal at the top right. */
 @media (min-width: 900px), (orientation: landscape) and (min-width: 640px) {
   .masthead {
     grid-template-areas:
@@ -383,7 +384,13 @@ body {
   }
 
   .tickets {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .tickets {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 

@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CARDS = ROOT / ".tmp" / "poster" / "cards"
 IMG = ROOT / "src" / "img"
 
-GAMES = ("maze", "tiki", "trivia")
+GAMES = ("maze", "tiki", "trivia", "sharp-mountain")
 WIDTHS = (480, 720, 960, 1200, 1440, 1920)
 
 

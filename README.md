@@ -1,8 +1,8 @@
-<p><a href="https://arcade.coneyislandpottsville.com"><img src="public/og.v2.jpg" alt="The Coney Island Pottsville Arcade share card: the masthead beside three stacked game tickets, Tiki Bar Slots on top, The Maze of Time and Trivia Bowl beneath"></a></p>
+<p><a href="https://arcade.coneyislandpottsville.com"><img src="public/og.v3.jpg" alt="The Coney Island Pottsville Arcade share card: the masthead beside four stacked game tickets, Tiki Bar Slots on top, The Maze of Time, Trivia Bowl and Sharp Mountain beneath"></a></p>
 
 # The Coney Island Pottsville Arcade
 
-The front door to the free games from The Coney Island, Pottsville, PA. One page, one ticket per game, each a link: The Maze of Time, Tiki Bar Slots and the Trivia Bowl. It is the arcade poster made tactile, and the tickets lift and tilt to follow the hand.
+The front door to the free games from The Coney Island, Pottsville, PA. One page, one ticket per game, each a link: The Maze of Time, Tiki Bar Slots, the Trivia Bowl and Sharp Mountain. It is the arcade poster made tactile, and the tickets lift and tilt to follow the hand.
 
 Play at [arcade.coneyislandpottsville.com](https://arcade.coneyislandpottsville.com).
 

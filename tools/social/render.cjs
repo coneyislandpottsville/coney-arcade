@@ -10,7 +10,7 @@
 const { chromium } = require("playwright");
 const fs = require("fs");
 
-const OG_VERSION = 2;
+const OG_VERSION = 3;
 const OG_FILE = `og.v${OG_VERSION}.jpg`;
 const path = require("path");
 
