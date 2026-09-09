@@ -89,21 +89,20 @@ describe("the production registry", () => {
       board: 10,
       clients: ["slots"],
       proof: "turnstile",
-      fields: { win: { type: "integer", required: true, min: 10, max: 250, step: 5, precision: 0, onInvalid: "reject" } },
+      fields: { win: { type: "integer", required: true, min: 2, max: 400, precision: 0, onInvalid: "reject" } },
       ranking: [{ field: "win", order: "desc", unknown: "last" }],
       columns: [{ field: "win", label: "Win", format: "integer" }],
     });
   });
 
   it("takes a Tiki Bar Slots win and refuses one the pay tables cannot produce", async () => {
-    const ok = await validate("slots", { win: 250 });
+    const ok = await validate("slots", { win: 400 });
     expect(ok.status).toBe(200);
-    expect(await body(ok)).toMatchObject({ ok: true, normalized: { initials: "PET", win: 250 } });
+    expect(await body(ok)).toMatchObject({ ok: true, normalized: { initials: "PET", win: 400 } });
 
     const refused: Array<[Record<string, unknown>, string]> = [
-      [{ win: 5 }, "win must be at least 10"],
-      [{ win: 255 }, "win must be at most 250"],
-      [{ win: 62 }, "win must be a multiple of 5"],
+      [{ win: 1 }, "win must be at least 2"],
+      [{ win: 401 }, "win must be at most 400"],
       [{ win: 250.5 }, "win must be an integer"],
       [{}, "win is required"],
     ];
@@ -113,10 +112,10 @@ describe("the production registry", () => {
       expect(await body(response)).toEqual({ ok: false, problems: [problem] });
     }
 
-    const spare = await validate("slots", { win: 10, streak: 3 });
+    const spare = await validate("slots", { win: 2, streak: 3 });
     expect(spare.status).toBe(200);
     const { normalized } = await body<{ normalized: Record<string, unknown> }>(spare);
-    expect(normalized).toEqual({ submissionId: expect.any(String), client: "slots", initials: "PET", win: 10 });
+    expect(normalized).toEqual({ submissionId: expect.any(String), client: "slots", initials: "PET", win: 2 });
   });
 
   it("lists Sharp Mountain", async () => {
