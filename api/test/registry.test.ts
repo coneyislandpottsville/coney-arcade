@@ -89,20 +89,20 @@ describe("the production registry", () => {
       board: 10,
       clients: ["slots"],
       proof: "turnstile",
-      fields: { win: { type: "integer", required: true, min: 2, max: 400, precision: 0, onInvalid: "reject" } },
+      fields: { win: { type: "integer", required: true, min: 2, max: 320, precision: 0, onInvalid: "reject" } },
       ranking: [{ field: "win", order: "desc", unknown: "last" }],
       columns: [{ field: "win", label: "Win", format: "integer" }],
     });
   });
 
   it("takes a Tiki Bar Slots win and refuses one the pay tables cannot produce", async () => {
-    const ok = await validate("slots", { win: 400 });
+    const ok = await validate("slots", { win: 320 });
     expect(ok.status).toBe(200);
-    expect(await body(ok)).toMatchObject({ ok: true, normalized: { initials: "PET", win: 400 } });
+    expect(await body(ok)).toMatchObject({ ok: true, normalized: { initials: "PET", win: 320 } });
 
     const refused: Array<[Record<string, unknown>, string]> = [
       [{ win: 1 }, "win must be at least 2"],
-      [{ win: 401 }, "win must be at most 400"],
+      [{ win: 321 }, "win must be at most 320"],
       [{ win: 250.5 }, "win must be an integer"],
       [{}, "win is required"],
     ];
