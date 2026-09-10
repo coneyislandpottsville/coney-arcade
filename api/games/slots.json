@@ -9,7 +9,7 @@
   "initials": { "default": "TKI" },
   "proof": "turnstile",
   "fields": {
-    "win": { "type": "integer", "required": true, "min": 2, "max": 400 }
+    "win": { "type": "integer", "required": true, "min": 2, "max": 320 }
   },
   "ranking": [{ "field": "win", "order": "desc" }],
   "columns": [{ "field": "win", "label": "Win" }]
