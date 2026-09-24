@@ -1,4 +1,4 @@
 # Working in this repo
 
 - GitHub account: **coneyislandpottsville**. Origin is `git@github.com-coney:coneyislandpottsville/coney-arcade.git`, the SSH alias from `~/.ssh/config`. Never switch it to https.
-- Art masters live in `.tmp/` and are never committed. `npm run images` cuts the tickets from `.tmp/poster/cards/<game>-card-4500.png`; `npm run social` draws the C mark, the favicons and the share card `public/og.v<N>.jpg`; bump the version when the card changes so shares refetch it.
+- Art masters live in `.tmp/` and are never committed. `npm run images` cuts the tickets from `.tmp/poster/cards/<game>-card-4500.png`; `npm run images:3d` derives the /3d page's renders and icon into `src/3d/img` and its stills into the maze-3d media set; `npm run social` draws the C mark, the favicons and the share card `public/og.v<N>.jpg`; bump the version when the card changes so shares refetch it. `npm run downloads:mirror [version]` copies a release of the Unreal client from GitHub into the R2 bucket `coney-arcade-downloads` and repoints `3d.html` at it; `functions/dl/` serves that bucket.

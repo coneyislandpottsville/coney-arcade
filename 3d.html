@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en" data-era="1917">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Maze of Time 3D · The Coney Island Pottsville Arcade</title>
+    <meta
+      name="description"
+      content="Coney runs the Schuylkill maze of time in 3D. One hundred fifty levels across twelve eras, on iPhone, iPad, Windows and Mac. Free, from The Coney Island in Pottsville, PA."
+    />
+    <meta name="theme-color" content="#08070b" />
+    <meta name="apple-itunes-app" content="app-id=6810012184" />
+    <link rel="canonical" href="https://arcade.coneyislandpottsville.com/3d" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Coney Island Pottsville Arcade" />
+    <meta property="og:title" content="Maze of Time 3D" />
+    <meta
+      property="og:description"
+      content="Coney runs the Schuylkill maze of time in 3D. One hundred fifty levels across twelve eras, on iPhone, iPad, Windows and Mac. Free."
+    />
+    <meta property="og:url" content="https://arcade.coneyislandpottsville.com/3d" />
+    <meta property="og:image" content="https://arcade.coneyislandpottsville.com/og-3d.v2.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Maze of Time 3D: the neon maze from above, with the key, the clock and the locked portal" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Maze of Time 3D" />
+    <meta
+      name="twitter:description"
+      content="Coney runs the Schuylkill maze of time in 3D. One hundred fifty levels across twelve eras, on iPhone, iPad, Windows and Mac. Free."
+    />
+    <meta name="twitter:image" content="https://arcade.coneyislandpottsville.com/og-3d.v2.jpg" />
+    <meta name="twitter:image:alt" content="Maze of Time 3D: the neon maze from above, with the key, the clock and the locked portal" />
+
+    <link rel="preload" href="/fonts/Anton-400.v1.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/HankenGrotesk-var.v1.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/src/3d/style.css" />
+    <script type="module" src="/src/3d/main.ts"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Maze of Time 3D",
+        "alternateName": "Coney Island Maze of Time",
+        "url": "https://arcade.coneyislandpottsville.com/3d",
+        "image": "https://arcade.coneyislandpottsville.com/og-3d.v2.jpg",
+        "description": "Coney runs the Schuylkill maze of time. Ladle chili, outrun the burgers, find the decade's key and reach the locked portal before the time ends. One hundred fifty levels across twelve eras.",
+        "genre": ["Action", "Casual"],
+        "applicationCategory": "Game",
+        "operatingSystem": "iOS, Windows, macOS",
+        "gamePlatform": ["iOS", "Windows", "macOS", "Web"],
+        "softwareVersion": "1.3.1",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Organization", "name": "The Coney Island Pottsville" },
+        "publisher": { "@type": "Organization", "name": "The Coney Island Pottsville Arcade", "url": "https://arcade.coneyislandpottsville.com/" }
+      }
+    </script>
+  </head>
+  <body data-media="/media/d083cc08/maze-3d/">
+    <svg hidden aria-hidden="true"><symbol id="keystone" viewBox="0 0 291 302"><g transform="translate(0 302) scale(0.1 -0.1)" fill="currentColor"><path d="M674 2563 c3 -10 35 -114 71 -231 36 -118 63 -218 59 -223 -3 -5 -138 -9 -310 -9 -286 0 -305 -1 -300 -17 9 -31 202 -778 286 -1103 45 -173 104 -403 132 -510 28 -107 58 -224 67 -260 l16 -65 753 -3 752 -2 10 22 c5 13 48 178 96 368 47 190 155 618 240 951 85 334 154 609 154 613 0 3 -137 6 -304 6 -168 0 -307 3 -310 8 -2 4 27 110 65 236 38 126 69 231 69 233 0 2 -349 3 -776 3 -734 0 -775 -1 -770 -17z m1436 -73 c0 -12 -58 -213 -101 -349 -17 -52 -27 -101 -24 -109 5 -13 45 -14 310 -8 200 5 305 4 305 -3 0 -5 -41 -169 -90 -363 -162 -632 -220 -866 -220 -882 0 -9 -4 -16 -8 -16 -5 0 -9 48 -9 107 l0 107 -49 45 c-27 25 -130 118 -229 206 -98 88 -245 220 -326 293 l-148 133 -3 77 -3 77 -130 77 c-71 43 -133 78 -136 78 -4 0 -45 -24 -92 -52 -46 -29 -105 -65 -131 -80 l-46 -28 0 -349 0 -350 -125 -86 -125 -86 -2 -302 -3 -302 -34 140 c-51 213 -306 1199 -357 1383 -25 89 -42 167 -39 172 4 6 126 10 307 10 166 0 303 2 306 5 5 5 -17 85 -84 299 -24 77 -44 146 -44 153 0 11 121 13 665 13 447 0 665 -3 665 -10z m-764 -676 l94 -55 0 -770 0 -769 -315 0 -315 0 2 337 3 337 120 82 120 82 5 351 5 351 90 55 c50 30 91 55 93 55 2 0 46 -25 98 -56z m454 -520 c135 -120 269 -239 297 -263 28 -25 50 -49 47 -53 -3 -4 -45 -8 -93 -8 l-88 0 -222 196 -221 197 0 90 c0 85 1 89 18 75 9 -8 127 -114 262 -234z m-117 -178 c80 -72 144 -134 141 -138 -3 -4 -25 -8 -49 -8 l-45 0 -2 -377 -3 -378 -100 0 -100 0 -3 518 c-1 305 2 517 7 515 5 -1 74 -61 154 -132z m487 -225 c0 -4 -38 -44 -85 -91 l-85 -85 -85 85 c-47 47 -85 87 -85 90 0 3 77 6 170 6 94 1 170 -2 170 -5z m-230 -236 c0 -6 -29 -40 -65 -75 l-65 -64 0 139 0 139 65 -64 c36 -35 65 -69 65 -75z m260 -1 c0 -68 -4 -124 -8 -124 -4 0 -37 29 -72 65 l-64 65 64 65 c35 35 67 62 72 59 4 -3 8 -61 8 -130z m-100 -149 l95 -95 -25 -97 -25 -98 -167 -3 -168 -2 0 98 0 99 93 97 c50 52 94 96 97 96 3 0 48 -43 100 -95z" /></g></symbol></svg>
+    <canvas class="scenery" aria-hidden="true"></canvas>
+    <div class="veil" aria-hidden="true"></div>
+
+    <header class="bar">
+      <a class="crumb" href="/">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" /></svg>
+        <span class="crumb-long">The Coney Island Pottsville Arcade</span>
+        <span class="crumb-short">The Arcade</span>
+      </a>
+      <div class="toggles">
+        <button class="toggle" type="button" data-toggle="scenery" aria-pressed="true" hidden>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 5c3-5 5 5 9 0s5 0 5 0M1 9c3-5 5 5 9 0s5 0 5 0M1 13c3-5 5 5 9 0s5 0 5 0" fill="none" stroke="currentColor" stroke-width="1.3" /></svg>
+          <span>Scenery</span>
+        </button>
+        <button class="toggle" type="button" data-toggle="music" aria-pressed="false" hidden>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 1.5v9.3a2.6 2.6 0 1 0 1.5 2.4V5.2l6-1.6v4.2a2.6 2.6 0 1 0 1.5 2.4V1L6 3z" fill="currentColor" /></svg>
+          <span>Music</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="kicker rise">Schuylkill County, PA · 1917 onward</p>
+          <h1 class="title">
+            <span class="tavern">The Coney Island Pottsville Restaurant &amp; Tavern</span>
+            <span class="name">Maze of Time<span class="badge3d" aria-label="3D">3D</span></span>
+          </h1>
+          <p class="hook rise rise-3">Reach the time portal before the clock runs out. Two shots per maze. Burgers end the game on contact.</p>
+          <div class="get rise rise-4">
+            <a class="store" href="https://apps.apple.com/us/app/coney-island-maze-of-time/id6810012184">
+              <img src="/src/3d/img/app-store-badge.svg" width="150" height="50" alt="Download on the App Store" />
+            </a>
+            <a class="plate" href="/dl/v1.3.1/ConeyIsland-Setup-1.3.1.exe">
+              <span class="plate-name">Windows</span>
+              <span class="plate-meta" data-size="setup">Installer · 458 MB</span>
+            </a>
+            <a class="plate" href="/dl/v1.3.1/ConeyIsland-1.3.1-mac.zip">
+              <span class="plate-name">macOS</span>
+              <span class="plate-meta" data-size="mac">Notarized · 595 MB</span>
+            </a>
+            <button
+              class="ghost watch"
+              type="button"
+              data-name="Maze of Time 3D"
+              data-poster="/media/d083cc08/maze-3d/poster.jpg"
+              data-av1="/media/d083cc08/maze-3d/trailer-1080p60.av1.mp4"
+              data-hevc="/media/d083cc08/maze-3d/trailer-1080p60.hevc.mp4"
+              data-h264="/media/d083cc08/maze-3d/trailer-1080p60.mp4"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.3 19.4 12 7 19.7z" fill="currentColor" /></svg>
+              Watch the trailer
+            </button>
+          </div>
+          <p class="fine rise rise-4">Free. No ads, no in-app purchases, no tracking. Version 1.3.1 on every platform.</p>
+        </div>
+
+        <div class="screen rise rise-3">
+          <span class="bezel">
+            <picture class="poster">
+              <source
+                type="image/avif"
+                srcset="/media/d083cc08/maze-3d/poster-loop-960.avif 960w, /media/d083cc08/maze-3d/poster-loop-1440.avif 1440w, /media/d083cc08/maze-3d/poster-loop.avif 1920w"
+                sizes="(min-width: 1024px) 50vw, calc(100vw - 36px)"
+              />
+              <img
+                src="/media/d083cc08/maze-3d/poster-loop.jpg"
+                srcset="/media/d083cc08/maze-3d/poster-loop-960.jpg 960w, /media/d083cc08/maze-3d/poster-loop-1440.jpg 1440w, /media/d083cc08/maze-3d/poster-loop.jpg 1920w"
+                sizes="(min-width: 1024px) 50vw, calc(100vw - 36px)"
+                width="1920"
+                height="1080"
+                alt="The 1917 maze from above: Coney takes the golden key and runs for the portal."
+                loading="lazy"
+                fetchpriority="low"
+                decoding="async"
+              />
+            </picture>
+            <video
+              class="loop"
+              muted
+              loop
+              playsinline
+              disablepictureinpicture
+              preload="none"
+              tabindex="-1"
+              aria-hidden="true"
+              data-av1="/media/d083cc08/maze-3d/loop-8s.av1.mp4"
+              data-h264="/media/d083cc08/maze-3d/loop-8s.mp4"
+            ></video>
+            <button class="hold" type="button" hidden>Pause</button>
+          </span>
+          <span class="screen-foot">
+            <span class="screen-note">Level 10, 1917 · the key and the portal</span>
+          </span>
+        </div>
+
+        <a class="descend" href="#eras">
+          <span>Descend</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" /></svg>
+        </a>
+      </section>
+
+      <section class="block eras" id="eras" aria-labelledby="eras-head">
+        <header class="rail">
+          <h2 id="eras-head">Twelve eras. One hundred fifty levels.</h2>
+          <p class="note">A decade deeper every ten levels. The streets change, the music changes, the era changes.</p>
+        </header>
+        <ol class="era-grid">
+          <li class="era" data-era="1917" style="--tint: #f0a13a">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1917-480.avif 480w, /media/d083cc08/maze-3d/era-1917-720.avif 720w, /media/d083cc08/maze-3d/era-1917-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1917-720.webp" srcset="/media/d083cc08/maze-3d/era-1917-480.webp 480w, /media/d083cc08/maze-3d/era-1917-720.webp 720w, /media/d083cc08/maze-3d/era-1917-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1917 maze, amber walls under gaslight" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1917</span>
+            <span class="era-meta">Levels 1 to 10 · 95 bpm</span>
+          </li>
+          <li class="era" data-era="1920s" style="--tint: #e8b04a">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1920s-480.avif 480w, /media/d083cc08/maze-3d/era-1920s-720.avif 720w, /media/d083cc08/maze-3d/era-1920s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1920s-720.webp" srcset="/media/d083cc08/maze-3d/era-1920s-480.webp 480w, /media/d083cc08/maze-3d/era-1920s-720.webp 720w, /media/d083cc08/maze-3d/era-1920s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1920s maze in gold" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1920s</span>
+            <span class="era-meta">Levels 11 to 20 · 122 bpm</span>
+          </li>
+          <li class="era" data-era="1930s" style="--tint: #d64a9c">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1930s-480.avif 480w, /media/d083cc08/maze-3d/era-1930s-720.avif 720w, /media/d083cc08/maze-3d/era-1930s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1930s-720.webp" srcset="/media/d083cc08/maze-3d/era-1930s-480.webp 480w, /media/d083cc08/maze-3d/era-1930s-720.webp 720w, /media/d083cc08/maze-3d/era-1930s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1930s maze in magenta" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1930s</span>
+            <span class="era-meta">Levels 21 to 30 · 174 bpm</span>
+          </li>
+          <li class="era" data-era="1940s" style="--tint: #7aa8a0">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1940s-480.avif 480w, /media/d083cc08/maze-3d/era-1940s-720.avif 720w, /media/d083cc08/maze-3d/era-1940s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1940s-720.webp" srcset="/media/d083cc08/maze-3d/era-1940s-480.webp 480w, /media/d083cc08/maze-3d/era-1940s-720.webp 720w, /media/d083cc08/maze-3d/era-1940s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1940s maze in steel and teal" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1940s</span>
+            <span class="era-meta">Levels 31 to 40 · 165 bpm</span>
+          </li>
+          <li class="era" data-era="1950s" style="--tint: #ff4a2e">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1950s-480.avif 480w, /media/d083cc08/maze-3d/era-1950s-720.avif 720w, /media/d083cc08/maze-3d/era-1950s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1950s-720.webp" srcset="/media/d083cc08/maze-3d/era-1950s-480.webp 480w, /media/d083cc08/maze-3d/era-1950s-720.webp 720w, /media/d083cc08/maze-3d/era-1950s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1950s maze in red neon" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1950s</span>
+            <span class="era-meta">Levels 41 to 50 · 166 bpm</span>
+          </li>
+          <li class="era" data-era="1960s" style="--tint: #b0a878">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1960s-480.avif 480w, /media/d083cc08/maze-3d/era-1960s-720.avif 720w, /media/d083cc08/maze-3d/era-1960s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1960s-720.webp" srcset="/media/d083cc08/maze-3d/era-1960s-480.webp 480w, /media/d083cc08/maze-3d/era-1960s-720.webp 720w, /media/d083cc08/maze-3d/era-1960s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1960s maze in olive and chrome" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1960s</span>
+            <span class="era-meta">Levels 51 to 60 · 161 bpm</span>
+          </li>
+          <li class="era" data-era="1970s" style="--tint: #f28a2a">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1970s-480.avif 480w, /media/d083cc08/maze-3d/era-1970s-720.avif 720w, /media/d083cc08/maze-3d/era-1970s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1970s-720.webp" srcset="/media/d083cc08/maze-3d/era-1970s-480.webp 480w, /media/d083cc08/maze-3d/era-1970s-720.webp 720w, /media/d083cc08/maze-3d/era-1970s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1970s maze in orange" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1970s</span>
+            <span class="era-meta">Levels 61 to 70 · 116 bpm</span>
+          </li>
+          <li class="era" data-era="1980s" style="--tint: #d8b8a0">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1980s-480.avif 480w, /media/d083cc08/maze-3d/era-1980s-720.avif 720w, /media/d083cc08/maze-3d/era-1980s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1980s-720.webp" srcset="/media/d083cc08/maze-3d/era-1980s-480.webp 480w, /media/d083cc08/maze-3d/era-1980s-720.webp 720w, /media/d083cc08/maze-3d/era-1980s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1980s maze in a brick arcade" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1980s</span>
+            <span class="era-meta">Levels 71 to 80 · 122 bpm</span>
+          </li>
+          <li class="era" data-era="1990s" style="--tint: #ff3b3b">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-1990s-480.avif 480w, /media/d083cc08/maze-3d/era-1990s-720.avif 720w, /media/d083cc08/maze-3d/era-1990s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-1990s-720.webp" srcset="/media/d083cc08/maze-3d/era-1990s-480.webp 480w, /media/d083cc08/maze-3d/era-1990s-720.webp 720w, /media/d083cc08/maze-3d/era-1990s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 1990s maze in laser red" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">1990s</span>
+            <span class="era-meta">Levels 81 to 90 · 131 bpm</span>
+          </li>
+          <li class="era" data-era="2000s" style="--tint: #7f9ac4">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-2000s-480.avif 480w, /media/d083cc08/maze-3d/era-2000s-720.avif 720w, /media/d083cc08/maze-3d/era-2000s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-2000s-720.webp" srcset="/media/d083cc08/maze-3d/era-2000s-480.webp 480w, /media/d083cc08/maze-3d/era-2000s-720.webp 720w, /media/d083cc08/maze-3d/era-2000s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 2000s maze in steel blue" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">2000s</span>
+            <span class="era-meta">Levels 91 to 100 · 128 bpm</span>
+          </li>
+          <li class="era" data-era="2010s" style="--tint: #f0a13a">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-2010s-480.avif 480w, /media/d083cc08/maze-3d/era-2010s-720.avif 720w, /media/d083cc08/maze-3d/era-2010s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-2010s-720.webp" srcset="/media/d083cc08/maze-3d/era-2010s-480.webp 480w, /media/d083cc08/maze-3d/era-2010s-720.webp 720w, /media/d083cc08/maze-3d/era-2010s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 2010s maze in amber light" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">2010s</span>
+            <span class="era-meta">Levels 101 to 110 · 124 bpm</span>
+          </li>
+          <li class="era" data-era="2020s" style="--tint: #e8f0ff">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-2020s-480.avif 480w, /media/d083cc08/maze-3d/era-2020s-720.avif 720w, /media/d083cc08/maze-3d/era-2020s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-2020s-720.webp" srcset="/media/d083cc08/maze-3d/era-2020s-480.webp 480w, /media/d083cc08/maze-3d/era-2020s-720.webp 720w, /media/d083cc08/maze-3d/era-2020s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 2020s maze in white neon" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">2020s</span>
+            <span class="era-meta">Levels 111 to 120 · 124 bpm</span>
+          </li>
+          <li class="era" data-era="2030s" style="--tint: #ff5040">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-2030s-480.avif 480w, /media/d083cc08/maze-3d/era-2030s-720.avif 720w, /media/d083cc08/maze-3d/era-2030s-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-2030s-720.webp" srcset="/media/d083cc08/maze-3d/era-2030s-480.webp 480w, /media/d083cc08/maze-3d/era-2030s-720.webp 720w, /media/d083cc08/maze-3d/era-2030s-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="The 2030s maze in orbit, the Earth below" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">2030s</span>
+            <span class="era-meta">Level 121 onward · 110 bpm</span>
+          </li>
+          <li class="era" data-era="orbit" style="--tint: #ff5040">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/era-orbit-480.avif 480w, /media/d083cc08/maze-3d/era-orbit-720.avif 720w, /media/d083cc08/maze-3d/era-orbit-1080.avif 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" />
+              <img src="/media/d083cc08/maze-3d/era-orbit-720.webp" srcset="/media/d083cc08/maze-3d/era-orbit-480.webp 480w, /media/d083cc08/maze-3d/era-orbit-720.webp 720w, /media/d083cc08/maze-3d/era-orbit-1080.webp 1080w" sizes="(min-width: 1000px) 24vw, (min-width: 640px) 31vw, 46vw" width="1080" height="810" alt="Fireworks over the level 150 maze, high above the Earth" loading="lazy" decoding="async" />
+            </picture>
+            <span class="era-year">Level 150</span>
+            <span class="era-meta">The finale, in orbit</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="block play" id="play" aria-labelledby="play-head">
+        <header class="rail">
+          <h2 id="play-head">How it plays</h2>
+          <p class="note">Touch first, with full keyboard and controller support.</p>
+        </header>
+        <ul class="features">
+          <li class="feature">
+            <picture class="prop">
+              <source type="image/avif" srcset="/src/3d/img/render-key-192.avif 192w, /src/3d/img/render-key-384.avif 384w" sizes="(min-width: 900px) 160px, 120px" />
+              <img src="/src/3d/img/render-key-384.webp" srcset="/src/3d/img/render-key-192.webp 192w, /src/3d/img/render-key-384.webp 384w" sizes="(min-width: 900px) 160px, 120px" width="384" height="384" alt="" loading="lazy" decoding="async" />
+            </picture>
+            <h3>Find the decade's key</h3>
+            <p>Every maze hides one. Take it before the clock does.</p>
+          </li>
+          <li class="feature">
+            <picture class="prop">
+              <source type="image/avif" srcset="/src/3d/img/render-portal-locked-192.avif 192w, /src/3d/img/render-portal-locked-384.avif 384w" sizes="(min-width: 900px) 160px, 120px" />
+              <img src="/src/3d/img/render-portal-locked-384.webp" srcset="/src/3d/img/render-portal-locked-192.webp 192w, /src/3d/img/render-portal-locked-384.webp 384w" sizes="(min-width: 900px) 160px, 120px" width="384" height="384" alt="" loading="lazy" decoding="async" />
+            </picture>
+            <h3>Reach the locked portal</h3>
+            <p>One key, one portal, one way out. Ten portals to the next decade.</p>
+          </li>
+          <li class="feature">
+            <picture class="prop">
+              <source type="image/avif" srcset="/src/3d/img/render-shovel-192.avif 192w, /src/3d/img/render-shovel-384.avif 384w" sizes="(min-width: 900px) 160px, 120px" />
+              <img src="/src/3d/img/render-shovel-384.webp" srcset="/src/3d/img/render-shovel-192.webp 192w, /src/3d/img/render-shovel-384.webp 384w" sizes="(min-width: 900px) 160px, 120px" width="384" height="384" alt="" loading="lazy" decoding="async" />
+            </picture>
+            <h3>Ladle the chili</h3>
+            <p>Serving chili keeps the burgers away. Two shots per maze, so make them count.</p>
+          </li>
+          <li class="feature">
+            <picture class="prop">
+              <source type="image/avif" srcset="/src/3d/img/render-burger-192.avif 192w, /src/3d/img/render-burger-384.avif 384w" sizes="(min-width: 900px) 160px, 120px" />
+              <img src="/src/3d/img/render-burger-384.webp" srcset="/src/3d/img/render-burger-192.webp 192w, /src/3d/img/render-burger-384.webp 384w" sizes="(min-width: 900px) 160px, 120px" width="384" height="384" alt="" loading="lazy" decoding="async" />
+            </picture>
+            <h3>Outrun the burgers</h3>
+            <p>They want chili too. Contact ends the run.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="block screens" id="screens" aria-labelledby="screens-head">
+        <header class="rail">
+          <h2 id="screens-head">Frenzy, keys and neon snow</h2>
+          <p class="note">As it looks on the phone, the pad and the desk.</p>
+        </header>
+        <ul class="strip">
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-frenzy-1957-720.avif 720w, /media/d083cc08/maze-3d/screen-frenzy-1957-1080.avif 1080w, /media/d083cc08/maze-3d/screen-frenzy-1957-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-frenzy-1957-1080.webp" srcset="/media/d083cc08/maze-3d/screen-frenzy-1957-720.webp 720w, /media/d083cc08/maze-3d/screen-frenzy-1957-1080.webp 1080w, /media/d083cc08/maze-3d/screen-frenzy-1957-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="A frenzy in 1957: the red neon maze with every burger ringed" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">Frenzy, 1957</span>
+          </li>
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-golden-key-720.avif 720w, /media/d083cc08/maze-3d/screen-golden-key-1080.avif 1080w, /media/d083cc08/maze-3d/screen-golden-key-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-golden-key-1080.webp" srcset="/media/d083cc08/maze-3d/screen-golden-key-720.webp 720w, /media/d083cc08/maze-3d/screen-golden-key-1080.webp 1080w, /media/d083cc08/maze-3d/screen-golden-key-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="The golden key glowing in a white maze" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">The golden key</span>
+          </li>
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-orbital-finale-720.avif 720w, /media/d083cc08/maze-3d/screen-orbital-finale-1080.avif 1080w, /media/d083cc08/maze-3d/screen-orbital-finale-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-orbital-finale-1080.webp" srcset="/media/d083cc08/maze-3d/screen-orbital-finale-720.webp 720w, /media/d083cc08/maze-3d/screen-orbital-finale-1080.webp 1080w, /media/d083cc08/maze-3d/screen-orbital-finale-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="Level 150 on a space station, the Earth turning below the maze" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">Orbital finale</span>
+          </li>
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-autumn-1987-720.avif 720w, /media/d083cc08/maze-3d/screen-autumn-1987-1080.avif 1080w, /media/d083cc08/maze-3d/screen-autumn-1987-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-autumn-1987-1080.webp" srcset="/media/d083cc08/maze-3d/screen-autumn-1987-720.webp 720w, /media/d083cc08/maze-3d/screen-autumn-1987-1080.webp 1080w, /media/d083cc08/maze-3d/screen-autumn-1987-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="Autumn 1987: a warm maze in a brick hall" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">Autumn, 1987</span>
+          </li>
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-neon-snow-2027-720.avif 720w, /media/d083cc08/maze-3d/screen-neon-snow-2027-1080.avif 1080w, /media/d083cc08/maze-3d/screen-neon-snow-2027-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-neon-snow-2027-1080.webp" srcset="/media/d083cc08/maze-3d/screen-neon-snow-2027-720.webp 720w, /media/d083cc08/maze-3d/screen-neon-snow-2027-1080.webp 1080w, /media/d083cc08/maze-3d/screen-neon-snow-2027-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="Neon snow in 2027: a white maze under falling flakes" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">Neon snow, 2027</span>
+          </li>
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-green-1947-720.avif 720w, /media/d083cc08/maze-3d/screen-green-1947-1080.avif 1080w, /media/d083cc08/maze-3d/screen-green-1947-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-green-1947-1080.webp" srcset="/media/d083cc08/maze-3d/screen-green-1947-720.webp 720w, /media/d083cc08/maze-3d/screen-green-1947-1080.webp 1080w, /media/d083cc08/maze-3d/screen-green-1947-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="Green 1947: a lime-lit maze" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">Green, 1947</span>
+          </li>
+          <li class="shot">
+            <picture>
+              <source type="image/avif" srcset="/media/d083cc08/maze-3d/screen-opening-1917-720.avif 720w, /media/d083cc08/maze-3d/screen-opening-1917-1080.avif 1080w, /media/d083cc08/maze-3d/screen-opening-1917-1440.avif 1440w" sizes="min(88vw, 760px)" />
+              <img src="/media/d083cc08/maze-3d/screen-opening-1917-1080.webp" srcset="/media/d083cc08/maze-3d/screen-opening-1917-720.webp 720w, /media/d083cc08/maze-3d/screen-opening-1917-1080.webp 1080w, /media/d083cc08/maze-3d/screen-opening-1917-1440.webp 1440w" sizes="min(88vw, 760px)" width="1440" height="666" alt="The opening in 1917: level one, the first maze" loading="lazy" decoding="async" />
+            </picture>
+            <span class="cap">Opening, 1917</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="block fame" id="hall-of-fame" aria-labelledby="fame-head">
+        <header class="rail">
+          <h2 id="fame-head">Hall of Fame</h2>
+          <p class="note">One public board, shared with the web game. Three initials, no accounts.</p>
+        </header>
+        <div class="board" hidden></div>
+        <p class="board-empty">The board opens when the first score lands.</p>
+      </section>
+
+      <section class="block get-game" id="get" aria-labelledby="get-head">
+        <header class="rail">
+          <h2 id="get-head">Get the game</h2>
+          <p class="note">Free on every platform. No ads, no in-app purchases, no tracking.</p>
+        </header>
+        <ul class="tiles">
+          <li class="tile tile-ios">
+            <img class="app-icon" src="/src/3d/img/app-icon-240.webp" width="120" height="120" alt="" loading="lazy" decoding="async" />
+            <span class="tile-kicker">iPhone and iPad</span>
+            <span class="tile-name">Coney Island Maze of Time</span>
+            <a class="store" href="https://apps.apple.com/us/app/coney-island-maze-of-time/id6810012184">
+              <img src="/src/3d/img/app-store-badge.svg" width="150" height="50" alt="Download on the App Store" />
+            </a>
+            <span class="tile-meta">iOS 17 or later · 232 MB · Rated 9+</span>
+          </li>
+          <li class="tile">
+            <span class="tile-kicker">Windows</span>
+            <span class="tile-name">Version 1.3.1</span>
+            <a class="file" href="/dl/v1.3.1/ConeyIsland-Setup-1.3.1.exe">
+              <span class="file-name">ConeyIsland-Setup-1.3.1.exe</span>
+              <span class="file-meta" data-size="setup">Installer · 458 MB</span>
+            </a>
+            <a class="file" href="/dl/v1.3.1/ConeyIsland-1.3.1-win64.zip">
+              <span class="file-name">ConeyIsland-1.3.1-win64.zip</span>
+              <span class="file-meta" data-size="win">Unzip and run · 565 MB</span>
+            </a>
+            <span class="tile-meta">The installer adds a Start menu entry and an uninstaller.</span>
+          </li>
+          <li class="tile">
+            <span class="tile-kicker">macOS</span>
+            <span class="tile-name">Version 1.3.1</span>
+            <a class="file" href="/dl/v1.3.1/ConeyIsland-1.3.1-mac.zip">
+              <span class="file-name">ConeyIsland-1.3.1-mac.zip</span>
+              <span class="file-meta" data-size="mac">Unzip and run · 595 MB</span>
+            </a>
+            <span class="tile-meta">Signed and notarized. Gatekeeper opens it without a warning.</span>
+          </li>
+          <li class="tile">
+            <span class="tile-kicker">In the browser</span>
+            <span class="tile-name">The Maze of Time</span>
+            <a class="file" href="https://maze.coneyislandpottsville.com/">
+              <span class="file-name">maze.ConeyIslandPottsville.com</span>
+              <span class="file-meta">The 2D original, no download</span>
+            </a>
+            <span class="tile-meta">Same maze, same board, same three initials.</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <span class="foot-name">The Coney Island Pottsville Restaurant &amp; Tavern</span>
+        <span class="foot-place">Pottsville, Pennsylvania</span>
+      </div>
+      <nav class="foot-links" aria-label="More">
+        <a href="/">The Arcade</a>
+        <a href="https://maze.coneyislandpottsville.com/">Play in the browser</a>
+        <a href="https://maze.coneyislandpottsville.com/support">Support</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
+      <a class="powered" href="https://schuylkillhub.com/">
+        <span>Powered by</span>
+        <svg viewBox="0 0 291 302" aria-hidden="true" width="18" height="19"><use href="#keystone" /></svg>
+        <strong>Schuylkill Hub</strong>
+      </a>
+    </footer>
+
+    <dialog class="theatre" aria-labelledby="theatre-name">
+      <form method="dialog" class="theatre-bar">
+        <span class="theatre-name" id="theatre-name"></span>
+        <button class="shut" type="submit" aria-label="Close the trailer">Close</button>
+      </form>
+      <video class="film" controls playsinline preload="none"></video>
+    </dialog>
+  </body>
+</html>
