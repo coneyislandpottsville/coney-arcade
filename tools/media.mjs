@@ -18,18 +18,30 @@ const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const TRAILERS = join(ROOT, ".tmp", "gameplay", "trailers");
 const MEDIA = join(ROOT, "public", "media");
 const MANIFEST = join(ROOT, "tools", "media-manifest.json");
-const INDEX = join(ROOT, "index.html");
+const PAGES = ["index.html", "3d.html"].map((name) => join(ROOT, name));
 const BUCKET = "coney-arcade-media";
 const WRANGLER = "wrangler@4.127.0";
 const CACHE = "public,max-age=31536000,immutable";
 
-const GAMES = ["maze", "slots", "trivia", "sharp-mountain"];
+const GAMES = ["maze", "slots", "trivia", "sharp-mountain", "maze-3d"];
 const FILES = [
   "poster.avif", "poster.jpg",
   "poster-loop.avif", "poster-loop.jpg",
   "loop-8s.mp4", "loop-8s.av1.mp4",
   "trailer-1080p60.mp4", "trailer-1080p60.av1.mp4", "trailer-1080p60.hevc.mp4",
 ];
+const ERAS = ["1917", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s", "2030s"];
+const SCREENS = ["frenzy-1957", "orbital-finale", "golden-key", "autumn-1987", "neon-snow-2027", "opening-1917", "green-1947"];
+const stills = (stems, widths) => stems.flatMap((stem) => widths.flatMap((w) => [`${stem}-${w}.avif`, `${stem}-${w}.webp`]));
+const EXTRA = {
+  "maze-3d": [
+    "poster-loop-960.avif", "poster-loop-960.jpg", "poster-loop-1440.avif", "poster-loop-1440.jpg",
+    ...ERAS.map((era) => `music-${era}.mp3`),
+    ...stills([...ERAS, "orbit"].map((era) => `era-${era}`), [480, 720, 1080]),
+    ...stills(SCREENS.map((name) => `screen-${name}`), [720, 1080, 1440]),
+  ],
+};
+const filesFor = (game) => [...FILES, ...(EXTRA[game] ?? [])];
 
 const sha = (path) => createHash("sha256").update(readFileSync(path)).digest("hex");
 
@@ -61,7 +73,7 @@ const command = process.argv[2];
 if (command === "stage") {
   const sources = [];
   for (const game of GAMES) {
-    for (const name of FILES) {
+    for (const name of filesFor(game)) {
       const source = join(TRAILERS, game, "out", name);
       if (!existsSync(source)) {
         console.error(`[media] missing ${source}`);
@@ -88,13 +100,14 @@ if (command === "stage") {
 
   writeFileSync(MANIFEST, `${JSON.stringify({ bucket: BUCKET, version, files }, null, 2)}\n`);
 
-  const html = readFileSync(INDEX, "utf8");
-  const swapped = html.replace(/\/media\/(?:[0-9a-f]{8}\/)?(?=maze\/|slots\/|trivia\/|sharp-mountain\/)/g, `/media/${version}/`);
-  writeFileSync(INDEX, swapped);
+  const prefix = new RegExp(`/media/(?:[0-9a-f]{8}/)?(?=(?:${GAMES.join("|")})/)`, "g");
+  for (const page of PAGES) {
+    writeFileSync(page, readFileSync(page, "utf8").replace(prefix, `/media/${version}/`));
+  }
 
   const bytes = sources.reduce((n, { source }) => n + statSync(source).size, 0);
   console.log(`[media] version ${version}: ${files.length} files, ${(bytes / 1e6).toFixed(1)} MB`);
-  console.log(`[media] index.html now points at /media/${version}/`);
+  console.log(`[media] the pages now point at /media/${version}/`);
 } else if (command === "push") {
   needsToken();
   const { files } = readManifest();
